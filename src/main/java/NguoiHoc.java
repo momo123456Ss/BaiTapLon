@@ -34,6 +34,7 @@ public class NguoiHoc {
     public void hienThiDsNguoiHoc(){
         System.out.printf("Số thứ tự: %d\n", this.getMaHV());
         System.out.printf("Họ tên : %s\n",this.hoTen);
+        System.out.printf("Giới tính: %s\n",this.gioiTinh);
         System.out.printf("Quê quán : %s\n",this.queQuan);
         System.out.printf("Ngày sinh : %s\n",f.format(this.getNgaySinh()));
         System.out.printf("Ngày tham gia : %s\n",f.format(this.getNgayGiaNhap()));

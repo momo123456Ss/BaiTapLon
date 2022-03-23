@@ -23,28 +23,24 @@ public class Run {
         dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
         System.out.println("===Danh sách người học====");
         dsNH.hienThiDanhSach();
-        List<NguoiHoc> kq = dsNH.docThongTinNguoiHoc();
-        DsNguoiHoc.xuatKetQuaNguoiHoc("src/main/resources/nguoihocketqua.txt",kq);
-        System.out.println("===Thêm một học viên====");
-        NguoiHoc newbie1 = new NguoiHoc("Nguyễn Thành K","Nam","Vĩnh Long","06/09/2002","06/07/2022");
-        dsNH.themHV(newbie1);
+//        List<NguoiHoc> kq = dsNH.docThongTinNguoiHoc();
+//        DsNguoiHoc.xuatKetQuaNguoiHoc("src/main/resources/nguoihocketqua.txt",kq);
+//        System.out.println("===Thêm một học viên====");
+//        NguoiHoc newbie1 = new NguoiHoc("Nguyễn Thành K","Nam","Vĩnh Long","06/09/2002","06/07/2022");
+//        dsNH.themHV(newbie1);
+//        dsNH.hienThiDanhSach();
+//        List<NguoiHoc> kqThem = dsNH.docThongTinNguoiHoc();
+//        dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqThem);
+//        NguoiHoc newbie2 = new NguoiHoc("Nguyễn Thành AK47","Nam","Long An","06/09/2000","06/07/2023");
+//        dsNH.themHV(newbie2);
+//        List<NguoiHoc> kqThem1 = dsNH.docThongTinNguoiHoc();
+//        dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqThem1);
+//        dsNH.xoaHV(newbie1);
+//        List<NguoiHoc> kqXoa = dsNH.docThongTinNguoiHoc();
+//        dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqXoa);
+        dsNH.capNhatThongTin(2);
         dsNH.hienThiDanhSach();
-        List<NguoiHoc> kqThem = dsNH.docThongTinNguoiHoc();
-        dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqThem);
-        NguoiHoc newbie2 = new NguoiHoc("Nguyễn Thành AK47","Nam","Long An","06/09/2000","06/07/2023");
-        dsNH.themHV(newbie2);
-        List<NguoiHoc> kqThem1 = dsNH.docThongTinNguoiHoc();
-        dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqThem1);
-        dsNH.xoaHV(newbie1);
-        List<NguoiHoc> kqXoa = dsNH.docThongTinNguoiHoc();
-        dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqXoa);
-//
-////        dsNH.hienThiDanhSach();
-////        dsNH.xoaHV(newbie1);
-////        DsNguoiHoc.capNhat("src/main/resources/nguoihoctest.txt",kq);
-////        NguoiHoc newbie2 = new NguoiHoc("Nguyễn Thành AK47","Nam","Long An","06/09/2000","06/07/2023");
-////        dsNH.themHV(newbie2);
-////        dsNH.hienThiDanhSach();
-////        DsNguoiHoc.capNhat("src/main/resources/nguoihoctest.txt",kq);
+        List<NguoiHoc> kqCapNhat = dsNH.docThongTinNguoiHoc();
+        dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqCapNhat);
     }
 }

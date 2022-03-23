@@ -12,6 +12,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 public class DsNguoiHoc {
     private List<NguoiHoc> ds = new ArrayList<>();
+    private static final SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+    private static final Scanner sc = new Scanner(System.in);
     public void themHV(NguoiHoc h){
         ds.add(h);
     }
@@ -64,5 +66,41 @@ public class DsNguoiHoc {
             }
         }
 
+    }
+
+    public void capNhatThongTin(int mahv) throws ParseException {
+        for (NguoiHoc h : this.ds){
+            if(h.getMaHV() == mahv){
+                System.out.print("====MENU cập nhật====\n1.Họ tên\n2.Giới tính\n3.Ngày sinh\n4.Ngày tham gia\n");
+                System.out.print("=>Bạn chọn : ");
+                int choose = sc.nextInt();
+                sc.nextLine();
+                switch (choose){
+                    case 1:
+                        System.out.print("Nhập tên muốn đổi: ");
+                        String upDateHoTen = sc.nextLine();
+                        h.setHoTen(upDateHoTen);
+                        break;
+                    case 2:
+                        System.out.print("Nhập giới tính muốn đổi : ");
+                        String upDateGioiTinh = sc.nextLine();
+                        h.setGioiTinh(upDateGioiTinh);
+                        break;
+                    case 3:
+                        System.out.print("Nhập ngày sinh muốn đổi : ");
+                        String upNgaySinh = sc.nextLine();
+                        Date ns = f.parse(upNgaySinh);
+                        h.setNgaySinh(ns);
+                        break;
+                    case 4:
+                        System.out.print("Nhập ngày tham gia muốn đổi : ");
+                        String upNgayThamGia = sc.nextLine();
+                        Date ntg = f.parse(upNgayThamGia);
+                        h.setNgaySinh(ntg);
+                        break;
+
+                }
+            }
+        }
     }
 }
