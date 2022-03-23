@@ -40,6 +40,7 @@ public class NguoiHoc {
         System.out.printf("Ngày tham gia : %s\n",f.format(this.getNgayGiaNhap()));
     }
 
+
     public String getHoTen() {
         return hoTen;
     }

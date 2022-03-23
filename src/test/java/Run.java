@@ -5,24 +5,28 @@ import java.util.List;
 
 public class Run {
     public static void main(String[] args) throws FileNotFoundException, ParseException {
-//        DsMC dsMC = new DsMC();
-//        dsMC.docFileMC("src/main/resources/mutichoice.txt");
+        //Câu hỏi -> tìm kiếm theo nội dung mức độ danh mục
+        DsMC dsMC = new DsMC();
+        dsMC.docFileMC("src/main/resources/mutichoice.txt");
 //        System.out.println("===Danh sách câu hỏi MutiChoice====");
 //        dsMC.hienThiDanhSach();
 //        System.out.println("\n=========================");
 //        System.out.println("\n=======Chọn đáp án đúng Mutiple Choice=========");
 //        dsMC.chonDapAnMutipleChoice();
-//        System.out.println("\n=========================");
-//        dsMC.chonDapAnCauHoiRandom();
+        System.out.println("\n=========================");
+        dsMC.chonDapAnCauHoiRandomMutiChoice();
 //        System.out.println("\n==========Tìm kiếm theo câu hỏi Mutiple Choice=============");
 //        dsMC.timKiemTheoNoiDungDanhMucMucDo("best","Choose","Dễ").forEach(h->h.hienThi());
 //        dsMC.timKiemTheoNoiDungDanhMucMucDo("It was","Choose the best","Khó").forEach(h->h.hienThi());
 //        dsMC.timKiemTheoNoiDungDanhMucMucDo("Trung").forEach(h->h.hienThi());
 
-        DsNguoiHoc dsNH = new DsNguoiHoc();
-        dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
-        System.out.println("===Danh sách người học====");
-        dsNH.hienThiDanhSach();
+
+        ///Quản lý học viên thêm sửa xóa cập nhật
+
+//        DsNguoiHoc dsNH = new DsNguoiHoc();
+//        dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
+//        System.out.println("===Danh sách người học====");
+//        dsNH.hienThiDanhSach();
 //        List<NguoiHoc> kq = dsNH.docThongTinNguoiHoc();
 //        DsNguoiHoc.xuatKetQuaNguoiHoc("src/main/resources/nguoihocketqua.txt",kq);
 //        System.out.println("===Thêm một học viên====");
@@ -37,10 +41,11 @@ public class Run {
 //        dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqThem1);
 //        dsNH.xoaHV(newbie1);
 //        List<NguoiHoc> kqXoa = dsNH.docThongTinNguoiHoc();
-//        dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqXoa);
-        dsNH.capNhatThongTin(2);
-        dsNH.hienThiDanhSach();
-        List<NguoiHoc> kqCapNhat = dsNH.docThongTinNguoiHoc();
-        dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqCapNhat);
+//        dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqXoa);b
+
+//        dsNH.capNhatThongTin(2);
+//        dsNH.hienThiDanhSach();
+//        List<NguoiHoc> kqCapNhat = dsNH.docThongTinNguoiHoc();
+//        dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqCapNhat);
     }
 }
