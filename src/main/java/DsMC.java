@@ -21,12 +21,11 @@ public class DsMC {
         try(Scanner scanner = new Scanner(f)) {
             while (scanner.hasNext()){
                 String noiDung = scanner.nextLine();
-                String dapAn1 = scanner.nextLine();
-                String dapAn2 = scanner.nextLine();
+                String danhSanhDapAn = scanner.nextLine();
                 String dapAnDung = scanner.nextLine();
                 String danhMuc = scanner.nextLine();
                 String doKho = scanner.nextLine();
-                MutiChoice mC = new MutiChoice(noiDung,dapAn1,dapAn2,dapAnDung,danhMuc,doKho);
+                MutiChoice mC = new MutiChoice(noiDung,danhSanhDapAn,dapAnDung,danhMuc,doKho);
                 this.dsMC.add(mC);
             }
         }
@@ -39,15 +38,21 @@ public class DsMC {
         System.out.printf("Số câu đúng của phần Muti Choice : %d/%d\n", MutiChoice.soCauDungMutipleChoice, MutiChoice.SO_CAU);
     }
 
-    public void chonDapAnCauHoiRandomMutiChoice(){
-        int index,oldIndex;
-        Random rand = new Random();
-        for (int i = 0 ; i< dsMC.size();i++){
-            index = rand.nextInt(dsMC.size());
-            MutiChoice randomElemen = dsMC.get(index);
+    public void RandomMutiChoie(){
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        for (int i = 0; i< this.dsMC.size();i++){
+            list.add(i);
+        }
+        Collections.shuffle(list);
+        for (int i = 0 ; i< dsMC.size();i++)
+        {
+            MutiChoice randomElemen = dsMC.get(list.get(i));
             randomElemen.chonDapAn();
         }
-        System.out.printf("Số câu đúng của phần Muti Choice : %d/%d\n", MutiChoice.soCauDungMutipleChoice, MutiChoice.SO_CAU);
+        for (int i = 0;i< list.size();i++){
+            MutiChoice randomElemen = dsMC.get(list.get(i));
+            randomElemen.hienThiKetQua();
+        }
     }
 
     public List<MutiChoice> timKiemTheoNoiDungDanhMucMucDo(String tuKhoa,String dm,String mucDo) {

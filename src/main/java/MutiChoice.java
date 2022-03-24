@@ -12,11 +12,13 @@ public class MutiChoice {
     private String dapAnDung;
     private String danhMuc;
     private String doKho;
+    private String danhSachDapAn;
+    private boolean check;
 
-    public MutiChoice(String nd,String dapAn1,String dapAn2,String dapAnDung,String danhMuc,String doKho){
+
+    public MutiChoice(String nd,String danhSachDapAn,String dapAnDung,String danhMuc,String doKho){
         this.noiDung = nd;
-        this.dapAn1 = dapAn1;
-        this.dapAn2 = dapAn2;
+        this.danhSachDapAn = danhSachDapAn;
         this.dapAnDung = dapAnDung;
         this.danhMuc = danhMuc;
         this.doKho = doKho;
@@ -24,20 +26,31 @@ public class MutiChoice {
 
     public void hienThi(){
         System.out.printf("\n%s\n",this.noiDung);
-        System.out.printf("A.%s\n",this.dapAn1);
-        System.out.printf("B.%s\n",this.dapAn2);
+        System.out.printf("%s\n",this.danhSachDapAn);
         System.out.printf("Danh mục: %s\n",this.danhMuc);
         System.out.printf("Cấp độ: %s\n",this.doKho);
     }
 
+    public void hienThiKetQua(){
+        if (this.check == false) {
+            System.out.printf("\n%d.%s |=> đáp án là %s\n",this.soThuTuCauHoi, this.noiDung, this.dapAnDung);
+        }
+        else
+            System.out.printf("\n%d.%s |=> bạn trả lời đúng\n", this.soThuTuCauHoi,this.noiDung);
+    }
+
     public void chonDapAn(){
         System.out.printf("Câu thứ %d: %s\n",this.soThuTuCauHoi,this.noiDung);
-        System.out.printf("A.%s\tB.%s\n",this.dapAn1,this.dapAn2);
+        System.out.printf("%s\n",this.danhSachDapAn);
         System.out.print("Nhập đáp án A hoặc B : ");
         String dapAnDung = sc.nextLine();
-        if(dapAnDung.equalsIgnoreCase(this.dapAnDung)){
-            soCauDungMutipleChoice++;
-        }
+            if(dapAnDung.equalsIgnoreCase(this.dapAnDung)){
+                soCauDungMutipleChoice++;
+                this.check = true;
+            }
+            else {
+                this.check = false;
+            }
     }
 
     public String getNoiDung() {
@@ -86,5 +99,13 @@ public class MutiChoice {
 
     public void setDoKho(String doKho) {
         this.doKho = doKho;
+    }
+
+    public String getDanhSachDapAn() {
+        return danhSachDapAn;
+    }
+
+    public void setDanhSachDapAn(String danhSachDapAn) {
+        this.danhSachDapAn = danhSachDapAn;
     }
 }

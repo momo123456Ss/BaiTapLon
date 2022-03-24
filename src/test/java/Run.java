@@ -13,8 +13,9 @@ public class Run {
 //        System.out.println("\n=========================");
 //        System.out.println("\n=======Chọn đáp án đúng Mutiple Choice=========");
 //        dsMC.chonDapAnMutipleChoice();
-        System.out.println("\n=========================");
-        dsMC.chonDapAnCauHoiRandomMutiChoice();
+//        System.out.println("\n=========================");
+//        dsMC.chonDapAnCauHoiRandomMutiChoice();
+        dsMC.RandomMutiChoie();
 //        System.out.println("\n==========Tìm kiếm theo câu hỏi Mutiple Choice=============");
 //        dsMC.timKiemTheoNoiDungDanhMucMucDo("best","Choose","Dễ").forEach(h->h.hienThi());
 //        dsMC.timKiemTheoNoiDungDanhMucMucDo("It was","Choose the best","Khó").forEach(h->h.hienThi());
