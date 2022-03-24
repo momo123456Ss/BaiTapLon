@@ -15,8 +15,8 @@ public class DsNguoiHoc {
     public void themHV(NguoiHoc h){
         ds.add(h);
     }
-    public void xoaHV(NguoiHoc h){
-        ds.remove(h);
+    public void xoaHV(int n){
+        ds.remove(n);
     }
     public void docDsNguoiHoc(String path) throws FileNotFoundException {
         File f = new File(path);
@@ -43,6 +43,12 @@ public class DsNguoiHoc {
         NguoiHoc.maHV = 1;
     }
 
+    public void hienThiDanhSachCapNhat(){
+        for (NguoiHoc h : this.ds){
+            h.hienThiDsNguoiHocDeCapNhat();
+        }
+    }
+
     public List<NguoiHoc> docThongTinNguoiHoc(){
         return this.ds.stream().collect(Collectors.toList());
     }
@@ -62,7 +68,16 @@ public class DsNguoiHoc {
         FileWriter w2 = new FileWriter(f,true);
         try (PrintWriter w = new PrintWriter(w2)){
             for (NguoiHoc h : capnhat){
-                w.printf("\n%s\n%s\n%s\n%s\n%s\n",h.getHoTen(),h.getGioiTinh(),h.getQueQuan(),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgaySinh()),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgayGiaNhap()));
+                w.printf("\n%s\n%s\n%s\n%s\n%s",h.getHoTen(),h.getGioiTinh(),h.getQueQuan(),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgaySinh()),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgayGiaNhap()));
+            }
+        }
+
+    }
+    public static void capNhatXoa(String path,List<NguoiHoc> capnhat) throws IOException {
+        File f = new File(path);
+        try (PrintWriter w = new PrintWriter(f)){
+            for (NguoiHoc h : capnhat){
+                w.printf("%s\n%s\n%s\n%s\n%s\n",h.getHoTen(),h.getGioiTinh(),h.getQueQuan(),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgaySinh()),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgayGiaNhap()));
             }
         }
 
@@ -71,7 +86,7 @@ public class DsNguoiHoc {
     public void capNhatThongTin(int mahv) throws ParseException {
         int choose;
         for (NguoiHoc h : this.ds){
-            if(h.getMaHV() == mahv){
+            if(h.getMaHVDeCapNhat() == mahv){
                 do {
                     System.out.print("====MENU cập nhật====\n1.Họ tên\n2.Giới tính\n3.Ngày sinh\n4.Ngày tham gia\n0.Ket Thuc\n");
                     System.out.print("=>Bạn chọn : ");

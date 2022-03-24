@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class NguoiHoc {
     private static final SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
-//    private static int dem = 0;
-//    private int maHV = ++dem;
+    private static int dem = 0;
+    private int maHVDeCapNhat = ++dem;
     private String hoTen;
     private String gioiTinh;
     private String queQuan;
@@ -40,6 +40,15 @@ public class NguoiHoc {
         System.out.printf("Ngày tham gia : %s\n",f.format(this.getNgayGiaNhap()));
     }
 
+
+    public void hienThiDsNguoiHocDeCapNhat(){
+        System.out.printf("Số thứ tự: %d\n", this.getMaHVDeCapNhat());
+        System.out.printf("Họ tên : %s\n",this.hoTen);
+        System.out.printf("Giới tính: %s\n",this.gioiTinh);
+        System.out.printf("Quê quán : %s\n",this.queQuan);
+        System.out.printf("Ngày sinh : %s\n",f.format(this.getNgaySinh()));
+        System.out.printf("Ngày tham gia : %s\n",f.format(this.getNgayGiaNhap()));
+    }
 
     public String getHoTen() {
         return hoTen;
@@ -103,5 +112,13 @@ public class NguoiHoc {
 
     public void setNgayGiaNhap(Date ngayGiaNhap) {
         this.ngayGiaNhap = ngayGiaNhap;
+    }
+
+    public int getMaHVDeCapNhat() {
+        return maHVDeCapNhat;
+    }
+
+    public void setMaHVDeCapNhat(int maHVDeCapNhat) {
+        this.maHVDeCapNhat = maHVDeCapNhat;
     }
 }

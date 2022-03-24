@@ -58,6 +58,7 @@ public class Run {
         int choose;
         Scanner sc = new Scanner(System.in);
         do {
+            int soTT;
             DsMC dsMC = new DsMC();
             DsNguoiHoc dsNH = new DsNguoiHoc();
             System.out.print("======MENU câu hỏi======\n");
@@ -111,8 +112,25 @@ public class Run {
                     List<NguoiHoc> kqThem = dsNH.docThongTinNguoiHoc();
                     dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqThem);
                     break;
-
+                case 10:
+                    System.out.println("===Xóa một học viên====");
+                    dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
+                    dsNH.hienThiDanhSach();
+                    System.out.print("Nhập số thứ tự muốn xóa: ");
+                    soTT = sc.nextInt();
+                    dsNH.xoaHV(soTT-1);
+                    List<NguoiHoc> kqXoa = dsNH.docThongTinNguoiHoc();
+                    dsNH.capNhatXoa("src/main/resources/nguoihoctest.txt",kqXoa);
+                case 11:
+                    System.out.println("===Cập nhật một học viên====");
+                    dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
+                    dsNH.hienThiDanhSachCapNhat();
+                    System.out.print("Nhập số thứ tự muốn cập nhật thông tin: ");
+                    soTT = sc.nextInt();
+                    dsNH.capNhatThongTin(soTT);
+                    List<NguoiHoc> kqCapNhat = dsNH.docThongTinNguoiHoc();
+                    dsNH.capNhatXoa("src/main/resources/nguoihoctest.txt",kqCapNhat);
             }
-        }while(choose >= 1 && choose <= 7);
+        }while(choose >= 1 && choose <= 11);
     }
 }
