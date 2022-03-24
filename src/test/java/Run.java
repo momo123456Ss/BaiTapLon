@@ -130,7 +130,7 @@ public class Run {
                     dsNH.capNhatThongTin(soTT);
                     List<NguoiHoc> kqCapNhat = dsNH.docThongTinNguoiHoc();
                     dsNH.capNhatXoa("src/main/resources/nguoihoctest.txt",kqCapNhat);
-            }
+            }//
         }while(choose >= 1 && choose <= 11);
     }
 }
