@@ -64,7 +64,7 @@ public class Run {
             System.out.print("======MENU câu hỏi======\n");
             System.out.print("1.Hiển Thị danh sách câu hỏi Mutiple Choice\n2.Hiển thi danh sách câu Incomple\n3." +
                     "Hiển thị danh sách câu hỏi Conversation\n4.Tìm kiếm câu hỏi theo từ khóa Nội dung-Độ khó-Danh mục\n" +
-                    "5.Random câu hỏi mutipleChoie\n" +
+                    "5.Random câu hỏi mutipleChoie\n6.Random câu hỏi InComplete\n7.Random câu hỏi Conservation\n" +
                     "======MENU người học======\n" +
                     "8.Hiển Thị danh sách Người Học\n9.Thêm 1 người học\n10.Xóa 1 người học\n11.Cập nhật thông tin 1 người học\n=>Bạn Chọn: ");
             choose = sc.nextInt();
@@ -94,6 +94,9 @@ public class Run {
                     dsMC.RandomMutiChoie();
                     break;
                 case 6:
+                    dsMC.docFileInCom("src/main/resources/incomplete.txt");
+                    dsMC.chonDapAnIncomplete();
+                    dsMC.hienThiDanhSachKetQuaINC();
                     break;
                 case 7:
                     break;
