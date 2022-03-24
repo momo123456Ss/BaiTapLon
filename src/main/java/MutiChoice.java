@@ -28,19 +28,17 @@ public class MutiChoice {
         System.out.printf("Danh mục: %s\n",this.danhMuc);
         System.out.printf("Cấp độ: %s\n",this.doKho);
     }
-
+    public static int demKetQua = 1;
     public void hienThiKetQua(){
-        int soThuTuCauHoi = 1;
         if (this.check == false) {
-            System.out.printf("\n%d.%s |=> đáp án là %s\n",soThuTuCauHoi++, this.noiDung, this.dapAnDung);
+            System.out.printf("\n%d.%s |=> đáp án là %s\n",demKetQua++,this.noiDung, this.dapAnDung);
         }
         else
-            System.out.printf("\n%d.%s |=> bạn trả lời đúng\n", soThuTuCauHoi++,this.noiDung);
+            System.out.printf("\n%d.%s |=> bạn trả lời đúng\n",demKetQua++,this.noiDung);
     }
-
+    public static int dem = 1;
     public void chonDapAn(){
-        int soThuTuCauHoi = 1;
-        System.out.printf("Câu thứ %d: %s\n",soThuTuCauHoi++,this.noiDung);
+        System.out.printf("Câu thứ %d: %s\n",dem++,this.noiDung);
         System.out.printf("%s\n",this.danhSachDapAn);
         System.out.print("Nhập đáp án A hoặc B : ");
         String dapAnDung = sc.nextLine();

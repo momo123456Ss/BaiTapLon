@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class NguoiHoc {
     private static final SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
-    private static int dem = 0;
-    private int maHV = ++dem;
+//    private static int dem = 0;
+//    private int maHV = ++dem;
     private String hoTen;
     private String gioiTinh;
     private String queQuan;
@@ -30,9 +30,9 @@ public class NguoiHoc {
         this.queQuan =  qq;
 
     }
-
+    public static int maHV = 1;
     public void hienThiDsNguoiHoc(){
-        System.out.printf("Số thứ tự: %d\n", this.getMaHV());
+        System.out.printf("Số thứ tự: %d\n", maHV++);
         System.out.printf("Họ tên : %s\n",this.hoTen);
         System.out.printf("Giới tính: %s\n",this.gioiTinh);
         System.out.printf("Quê quán : %s\n",this.queQuan);

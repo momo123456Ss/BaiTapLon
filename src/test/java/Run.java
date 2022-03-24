@@ -1,11 +1,13 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class Run {
-    public static void main(String[] args) throws FileNotFoundException, ParseException {
+    public static void main(String[] args) throws IOException, ParseException {
         //Câu hỏi -> tìm kiếm theo nội dung mức độ danh mục
 //        DsMC dsMC = new DsMC();
 //        dsMC.docFileMC("src/main/resources/mutichoice.txt");
@@ -56,37 +58,57 @@ public class Run {
         int choose;
         Scanner sc = new Scanner(System.in);
         do {
-            System.out.print("======MENU======\n");
+            DsMC dsMC = new DsMC();
+            DsNguoiHoc dsNH = new DsNguoiHoc();
+            System.out.print("======MENU câu hỏi======\n");
             System.out.print("1.Hiển Thị danh sách câu hỏi Mutiple Choice\n2.Hiển thi danh sách câu Incomple\n3." +
                     "Hiển thị danh sách câu hỏi Conversation\n4.Tìm kiếm câu hỏi theo từ khóa Nội dung-Độ khó-Danh mục\n" +
-                    "5.Random câu hỏi mutipleChoie\nBạn chọn: ");
+                    "5.Random câu hỏi mutipleChoie\n" +
+                    "======MENU người học======\n" +
+                    "6.Hiển Thị danh sách Người Học\n7.Thêm 1 người học\n=>Bạn Chọn: ");
             choose = sc.nextInt();
             sc.nextLine();
             switch (choose){
                 case 1:
-                    DsMC dsMCCase1 = new DsMC();
-                    dsMCCase1.docFileMC("src/main/resources/mutichoice.txt");
+                    dsMC.docFileMC("src/main/resources/mutichoice.txt");
                     System.out.println("===Danh sách câu hỏi MutiChoice====");
-                    dsMCCase1.hienThiDanhSach();
+                    dsMC.hienThiDanhSach();
                     break;
                 case 2:
                     break;
                 case 3:
                     break;
                 case 4:
-                    DsMC dsMCCase4 = new DsMC();
-                    dsMCCase4.docFileMC("src/main/resources/mutichoice.txt");
-                    System.out.print("Nhập từ khóa muốn tìm kiếm: ");
+                    dsMC.docFileMC("src/main/resources/mutichoice.txt");
+                    System.out.print("Nhập từ khóa muốn tìm kiếm trong danh sách câu hỏi Mutiple choice: ");
                     String tuKhoa = sc.nextLine();
-                    dsMCCase4.timKiemTheoNoiDungDanhMucMucDo(tuKhoa).forEach(h->h.hienThi());
+                    dsMC.timKiemTheoNoiDungDanhMucMucDo(tuKhoa).forEach(h->h.hienThi());
                     break;
                 case 5:
-                    DsMC dsMCCase5 = new DsMC();
-                    dsMCCase5.docFileMC("src/main/resources/mutichoice.txt");
-                    dsMCCase5.RandomMutiChoie();
+                    MutiChoice.dem =1;
+                    dsMC.docFileMC("src/main/resources/mutichoice.txt");
+                    dsMC.RandomMutiChoie();
+                    break;
+                case 6:
+                    dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
+                    System.out.println("===Danh sách người học====");
+                    dsNH.hienThiDanhSach();
+                    break;
+                case 7:
+                    SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+                    System.out.println("===Thêm một học viên====");
+                    dsNH.hienThiDanhSach();
+                    System.out.print("Nhập họ tên muốn thêm: "); String hoTen = sc.nextLine();
+                    System.out.print("Nhập giới tính muốn thêm: "); String gioiTinh = sc.nextLine();
+                    System.out.print("Nhập quê quán muốn thêm: "); String qq = sc.nextLine();
+                    System.out.print("Nhập ngày sinh muốn thêm: "); String ns = sc.nextLine();
+                    NguoiHoc newbie1 = new NguoiHoc(hoTen,gioiTinh,qq,ns, f.format(new Date()));
+                    dsNH.themHV(newbie1);
+                    List<NguoiHoc> kqThem = dsNH.docThongTinNguoiHoc();
+                    dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqThem);
                     break;
 
             }
-        }while(choose >= 1 && choose <= 5);
+        }while(choose >= 1 && choose <= 7);
     }
 }

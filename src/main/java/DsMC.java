@@ -14,6 +14,7 @@ public class DsMC {
         for (MutiChoice h : this.getDsMC()){
             h.hienThi();
         }
+        MutiChoice.dem =1;
     }
 
     public void docFileMC(String path) throws FileNotFoundException {
@@ -44,7 +45,7 @@ public class DsMC {
             list.add(i);
         }
         Collections.shuffle(list);
-        for (int i = 0 ; i< dsMC.size();i++)
+        for (int i = 0 ; i < this.dsMC.size();i++)
         {
             MutiChoice randomElemen = dsMC.get(list.get(i));
             randomElemen.chonDapAn();

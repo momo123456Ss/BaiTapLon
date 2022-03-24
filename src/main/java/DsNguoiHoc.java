@@ -1,6 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,6 +40,7 @@ public class DsNguoiHoc {
         for (NguoiHoc h : this.ds){
             h.hienThiDsNguoiHoc();
         }
+        NguoiHoc.maHV = 1;
     }
 
     public List<NguoiHoc> docThongTinNguoiHoc(){
@@ -58,11 +57,12 @@ public class DsNguoiHoc {
 
     }
 
-    public static void capNhat(String path,List<NguoiHoc> capnhat) throws FileNotFoundException {
+    public static void capNhat(String path,List<NguoiHoc> capnhat) throws IOException {
         File f = new File(path);
-        try (PrintWriter w = new PrintWriter(f)){
+        FileWriter w2 = new FileWriter(f,true);
+        try (PrintWriter w = new PrintWriter(w2)){
             for (NguoiHoc h : capnhat){
-                w.printf("%s\n%s\n%s\n%s\n%s\n",h.getHoTen(),h.getGioiTinh(),h.getQueQuan(),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgaySinh()),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgayGiaNhap()));
+                w.printf("\n%s\n%s\n%s\n%s\n%s\n",h.getHoTen(),h.getGioiTinh(),h.getQueQuan(),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgaySinh()),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgayGiaNhap()));
             }
         }
 
