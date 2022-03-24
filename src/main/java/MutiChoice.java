@@ -4,8 +4,6 @@ public class MutiChoice {
     public static int SO_CAU = 9;
     private static final Scanner sc = new Scanner(System.in);
     public static int soCauDungMutipleChoice = 0;
-    private static int dem = 0;
-    private int soThuTuCauHoi = ++dem;
     private String noiDung;
     private String dapAn1;
     private String dapAn2;
@@ -32,15 +30,17 @@ public class MutiChoice {
     }
 
     public void hienThiKetQua(){
+        int soThuTuCauHoi = 1;
         if (this.check == false) {
-            System.out.printf("\n%d.%s |=> đáp án là %s\n",this.soThuTuCauHoi, this.noiDung, this.dapAnDung);
+            System.out.printf("\n%d.%s |=> đáp án là %s\n",soThuTuCauHoi++, this.noiDung, this.dapAnDung);
         }
         else
-            System.out.printf("\n%d.%s |=> bạn trả lời đúng\n", this.soThuTuCauHoi,this.noiDung);
+            System.out.printf("\n%d.%s |=> bạn trả lời đúng\n", soThuTuCauHoi++,this.noiDung);
     }
 
     public void chonDapAn(){
-        System.out.printf("Câu thứ %d: %s\n",this.soThuTuCauHoi,this.noiDung);
+        int soThuTuCauHoi = 1;
+        System.out.printf("Câu thứ %d: %s\n",soThuTuCauHoi++,this.noiDung);
         System.out.printf("%s\n",this.danhSachDapAn);
         System.out.print("Nhập đáp án A hoặc B : ");
         String dapAnDung = sc.nextLine();
