@@ -76,6 +76,9 @@ public class Run {
                     dsMC.hienThiDanhSach();
                     break;
                 case 2:
+                    dsMC.docFileInCom("src/main/resources/incomplete.txt");
+                    System.out.println("===Danh sách câu hỏi Incomplete====");
+                    dsMC.hienThiInComplete();
                     break;
                 case 3:
                     break;
