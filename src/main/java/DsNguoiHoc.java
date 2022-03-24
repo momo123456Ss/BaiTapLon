@@ -69,37 +69,40 @@ public class DsNguoiHoc {
     }
 
     public void capNhatThongTin(int mahv) throws ParseException {
+        int choose;
         for (NguoiHoc h : this.ds){
             if(h.getMaHV() == mahv){
-                System.out.print("====MENU cập nhật====\n1.Họ tên\n2.Giới tính\n3.Ngày sinh\n4.Ngày tham gia\n");
-                System.out.print("=>Bạn chọn : ");
-                int choose = sc.nextInt();
-                sc.nextLine();
-                switch (choose){
-                    case 1:
-                        System.out.print("Nhập tên muốn đổi: ");
-                        String upDateHoTen = sc.nextLine();
-                        h.setHoTen(upDateHoTen);
-                        break;
-                    case 2:
-                        System.out.print("Nhập giới tính muốn đổi : ");
-                        String upDateGioiTinh = sc.nextLine();
-                        h.setGioiTinh(upDateGioiTinh);
-                        break;
-                    case 3:
-                        System.out.print("Nhập ngày sinh muốn đổi : ");
-                        String upNgaySinh = sc.nextLine();
-                        Date ns = f.parse(upNgaySinh);
-                        h.setNgaySinh(ns);
-                        break;
-                    case 4:
-                        System.out.print("Nhập ngày tham gia muốn đổi : ");
-                        String upNgayThamGia = sc.nextLine();
-                        Date ntg = f.parse(upNgayThamGia);
-                        h.setNgaySinh(ntg);
-                        break;
+                do {
+                    System.out.print("====MENU cập nhật====\n1.Họ tên\n2.Giới tính\n3.Ngày sinh\n4.Ngày tham gia\n0.Ket Thuc\n");
+                    System.out.print("=>Bạn chọn : ");
+                    choose = sc.nextInt();
+                    sc.nextLine();
+                    switch (choose) {
+                        case 1:
+                            System.out.print("Nhập tên muốn đổi: ");
+                            String upDateHoTen = sc.nextLine();
+                            h.setHoTen(upDateHoTen);
+                            break;
+                        case 2:
+                            System.out.print("Nhập giới tính muốn đổi : ");
+                            String upDateGioiTinh = sc.nextLine();
+                            h.setGioiTinh(upDateGioiTinh);
+                            break;
+                        case 3:
+                            System.out.print("Nhập ngày sinh muốn đổi : ");
+                            String upNgaySinh = sc.nextLine();
+                            Date ns = f.parse(upNgaySinh);
+                            h.setNgaySinh(ns);
+                            break;
+                        case 4:
+                            System.out.print("Nhập ngày tham gia muốn đổi : ");
+                            String upNgayThamGia = sc.nextLine();
+                            Date ntg = f.parse(upNgayThamGia);
+                            h.setNgaySinh(ntg);
+                            break;
 
-                }
+                    }
+                }while (choose >= 1 && choose <= 4);
             }
         }
     }

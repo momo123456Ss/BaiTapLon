@@ -6,8 +6,8 @@ import java.util.List;
 public class Run {
     public static void main(String[] args) throws FileNotFoundException, ParseException {
         //Câu hỏi -> tìm kiếm theo nội dung mức độ danh mục
-        DsMC dsMC = new DsMC();
-        dsMC.docFileMC("src/main/resources/mutichoice.txt");
+//        DsMC dsMC = new DsMC();
+//        dsMC.docFileMC("src/main/resources/mutichoice.txt");
 //        System.out.println("===Danh sách câu hỏi MutiChoice====");
 //        dsMC.hienThiDanhSach();
 //        System.out.println("\n=========================");
@@ -15,7 +15,7 @@ public class Run {
 //        dsMC.chonDapAnMutipleChoice();
 //        System.out.println("\n=========================");
 //        dsMC.chonDapAnCauHoiRandomMutiChoice();
-        dsMC.RandomMutiChoie();
+//        dsMC.RandomMutiChoie();
 //        System.out.println("\n==========Tìm kiếm theo câu hỏi Mutiple Choice=============");
 //        dsMC.timKiemTheoNoiDungDanhMucMucDo("best","Choose","Dễ").forEach(h->h.hienThi());
 //        dsMC.timKiemTheoNoiDungDanhMucMucDo("It was","Choose the best","Khó").forEach(h->h.hienThi());
@@ -42,9 +42,9 @@ public class Run {
 //        dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqThem1);
 //        dsNH.xoaHV(newbie1);
 //        List<NguoiHoc> kqXoa = dsNH.docThongTinNguoiHoc();
-//        dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqXoa);b
-
-//        dsNH.capNhatThongTin(2);
+//        dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqXoa);
+//
+//        dsNH.capNhatThongTin(1);
 //        dsNH.hienThiDanhSach();
 //        List<NguoiHoc> kqCapNhat = dsNH.docThongTinNguoiHoc();
 //        dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqCapNhat);
