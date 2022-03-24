@@ -65,7 +65,7 @@ public class Run {
                     "Hiển thị danh sách câu hỏi Conversation\n4.Tìm kiếm câu hỏi theo từ khóa Nội dung-Độ khó-Danh mục\n" +
                     "5.Random câu hỏi mutipleChoie\n" +
                     "======MENU người học======\n" +
-                    "6.Hiển Thị danh sách Người Học\n7.Thêm 1 người học\n=>Bạn Chọn: ");
+                    "8.Hiển Thị danh sách Người Học\n9.Thêm 1 người học\n10.Xóa 1 người học\n11.Cập nhật thông tin 1 người học\n=>Bạn Chọn: ");
             choose = sc.nextInt();
             sc.nextLine();
             switch (choose){
@@ -90,11 +90,15 @@ public class Run {
                     dsMC.RandomMutiChoie();
                     break;
                 case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
                     dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
                     System.out.println("===Danh sách người học====");
                     dsNH.hienThiDanhSach();
                     break;
-                case 7:
+                case 9:
                     SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
                     System.out.println("===Thêm một học viên====");
                     dsNH.hienThiDanhSach();
