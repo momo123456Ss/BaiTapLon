@@ -91,12 +91,15 @@ public class Run {
                 case 5:
                     MutiChoice.dem =1;
                     dsMC.docFileMC("src/main/resources/mutichoice.txt");
-                    dsMC.RandomMutiChoie();
+                    System.out.print("Nhập số lượng câu hỏi: ");
+                    int index = sc.nextInt();
+                    dsMC.RandomMutiChoie(index);
                     break;
                 case 6:
                     dsMC.docFileInCom("src/main/resources/incomplete.txt");
-                    dsMC.chonDapAnIncomplete();
-                    dsMC.hienThiDanhSachKetQuaINC();
+                    System.out.print("Nhập mức độ câu hỏi: ");
+                    String tu = sc.nextLine();
+                    dsMC.RandomIncomplete(tu);
                     break;
                 case 7:
                     break;

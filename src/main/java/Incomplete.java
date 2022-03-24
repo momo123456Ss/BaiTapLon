@@ -18,7 +18,7 @@ public class Incomplete {
         this.noiDung = nd;
         this.setDong(dong);
         this.setDapAn(dapAn);
-        this.doKho = doKho;
+        this.setDoKho(doKho);
     }
 
     public void hienThiINC(){
@@ -26,7 +26,7 @@ public class Incomplete {
         for (int i = 0; i < SO_CAU; i++) {
             System.out.println(this.dong.get(i));
         }
-        System.out.printf("Cấp độ: %s\n",this.doKho);
+        System.out.printf("Cấp độ: %s\n", this.getDoKho());
     }
 
     //Chọn đáp án INC
@@ -99,5 +99,13 @@ public class Incomplete {
 
     public void setChondapAn(ArrayList<String> chondapAn) {
         this.chondapAn = chondapAn;
+    }
+
+    public String getDoKho() {
+        return doKho;
+    }
+
+    public void setDoKho(String doKho) {
+        this.doKho = doKho;
     }
 }
