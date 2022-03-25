@@ -66,7 +66,7 @@ public class Run {
                     "Hiển thị danh sách câu hỏi Conversation\n4.Tìm kiếm câu hỏi theo từ khóa Nội dung-Độ khó-Danh mục\n" +
                     "5.Random câu hỏi mutipleChoie\n6.Random câu hỏi InComplete\n7.Random câu hỏi Conservation\n" +
                     "======MENU người học======\n" +
-                    "8.Hiển Thị danh sách Người Học\n9.Thêm 1 người học\n10.Xóa 1 người học\n11.Cập nhật thông tin 1 người học\n=>Bạn Chọn: ");
+                    "8.Hiển Thị danh sách Người Học\n9.Thêm 1 người học\n10.Xóa 1 người học\n11.Cập nhật thông tin 1 người học\n12.List\n=>Bạn Chọn: ");
             choose = sc.nextInt();
             sc.nextLine();
             switch (choose){
@@ -81,6 +81,9 @@ public class Run {
                     dsMC.hienThiInComplete();
                     break;
                 case 3:
+                    dsMC.docFileConservation("src/main/resources/conservation.txt");
+                    System.out.println("===Danh sách câu hỏi Conservation====");
+                    dsMC.hienThiConServation();
                     break;
                 case 4:
                     dsMC.docFileMC("src/main/resources/mutichoice.txt");
@@ -89,7 +92,6 @@ public class Run {
                     dsMC.timKiemTheoNoiDungDanhMucMucDo(tuKhoa).forEach(h->h.hienThi());
                     break;
                 case 5:
-                    MutiChoice.dem =1;
                     dsMC.docFileMC("src/main/resources/mutichoice.txt");
                     System.out.print("Nhập số lượng câu hỏi: ");
                     int index = sc.nextInt();
@@ -100,8 +102,14 @@ public class Run {
                     System.out.print("Nhập mức độ câu hỏi: ");
                     String tu = sc.nextLine();
                     dsMC.RandomIncomplete(tu);
+                    Incomplete.setDem();
                     break;
                 case 7:
+                    dsMC.docFileConservation("src/main/resources/conservation.txt");
+                    System.out.print("Nhập mức độ câu hỏi: ");
+                    String tu2 = sc.nextLine();
+                    dsMC.RandomConservation(tu2);
+                    Conversation.setDem();
                     break;
                 case 8:
                     dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
@@ -122,6 +130,7 @@ public class Run {
                     dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqThem);
                     break;
                 case 10:
+                    NguoiHoc.setDem();
                     System.out.println("===Xóa một học viên====");
                     dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
                     dsNH.hienThiDanhSach();
@@ -130,16 +139,25 @@ public class Run {
                     dsNH.xoaHV(soTT-1);
                     List<NguoiHoc> kqXoa = dsNH.docThongTinNguoiHoc();
                     dsNH.capNhatXoa("src/main/resources/nguoihoctest.txt",kqXoa);
+
+                    break;
                 case 11:
+                    NguoiHoc.setDem();
                     System.out.println("===Cập nhật một học viên====");
                     dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
-                    dsNH.hienThiDanhSachCapNhat();
+                    dsNH.hienThiDanhSach();
                     System.out.print("Nhập số thứ tự muốn cập nhật thông tin: ");
                     soTT = sc.nextInt();
                     dsNH.capNhatThongTin(soTT);
                     List<NguoiHoc> kqCapNhat = dsNH.docThongTinNguoiHoc();
                     dsNH.capNhatXoa("src/main/resources/nguoihoctest.txt",kqCapNhat);
+                    break;
+                case 12:
+                    dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
+                    List<NguoiHoc> kq = dsNH.docThongTinNguoiHoc();
+                    DsNguoiHoc.xuatKetQuaNguoiHoc("src/main/resources/nguoihocketqua.txt",kq);
+                    break;
             }//
-        }while(choose >= 1 && choose <= 11);
+        }while(choose >= 1 && choose <= 12);
     }
 }

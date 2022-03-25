@@ -14,9 +14,11 @@ public class DsNguoiHoc {
     private static final Scanner sc = new Scanner(System.in);
     public void themHV(NguoiHoc h){
         ds.add(h);
+        NguoiHoc.setDem();
     }
     public void xoaHV(int n){
         ds.remove(n);
+        NguoiHoc.setDem();
     }
     public void docDsNguoiHoc(String path) throws FileNotFoundException {
         File f = new File(path);
@@ -40,14 +42,15 @@ public class DsNguoiHoc {
         for (NguoiHoc h : this.ds){
             h.hienThiDsNguoiHoc();
         }
-        NguoiHoc.maHV = 1;
+        NguoiHoc.setDem();
     }
 
-    public void hienThiDanhSachCapNhat(){
-        for (NguoiHoc h : this.ds){
-            h.hienThiDsNguoiHocDeCapNhat();
-        }
-    }
+//    public void hienThiDanhSachCapNhat(){
+//        for (NguoiHoc h : this.ds){
+//            h.hienThiDsNguoiHocDeCapNhat();
+//        }
+//        NguoiHoc.setDem();
+//    }
 
     public List<NguoiHoc> docThongTinNguoiHoc(){
         return this.ds.stream().collect(Collectors.toList());
@@ -68,7 +71,7 @@ public class DsNguoiHoc {
         FileWriter w2 = new FileWriter(f,true);
         try (PrintWriter w = new PrintWriter(w2)){
             for (NguoiHoc h : capnhat){
-                w.printf("\n%s\n%s\n%s\n%s\n%s",h.getHoTen(),h.getGioiTinh(),h.getQueQuan(),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgaySinh()),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgayGiaNhap()));
+                w.printf("%s\n%s\n%s\n%s\n%s",h.getHoTen(),h.getGioiTinh(),h.getQueQuan(),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgaySinh()),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgayGiaNhap()));
             }
         }
 
@@ -80,13 +83,13 @@ public class DsNguoiHoc {
                 w.printf("%s\n%s\n%s\n%s\n%s\n",h.getHoTen(),h.getGioiTinh(),h.getQueQuan(),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgaySinh()),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgayGiaNhap()));
             }
         }
-
+        NguoiHoc.setDem();
     }
 
     public void capNhatThongTin(int mahv) throws ParseException {
         int choose;
         for (NguoiHoc h : this.ds){
-            if(h.getMaHVDeCapNhat() == mahv){
+            if(h.getMaHV() == mahv){
                 do {
                     System.out.print("====MENU cập nhật====\n1.Họ tên\n2.Giới tính\n3.Ngày sinh\n4.Ngày tham gia\n0.Ket Thuc\n");
                     System.out.print("=>Bạn chọn : ");

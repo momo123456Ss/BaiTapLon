@@ -5,7 +5,7 @@ import java.util.Date;
 public class NguoiHoc {
     private static final SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
     private static int dem = 0;
-    private int maHVDeCapNhat = ++dem;
+    private int maHV = ++dem;
     private String hoTen;
     private String gioiTinh;
     private String queQuan;
@@ -30,9 +30,8 @@ public class NguoiHoc {
         this.queQuan =  qq;
 
     }
-    public static int maHV = 1;
     public void hienThiDsNguoiHoc(){
-        System.out.printf("Số thứ tự: %d\n", maHV++);
+        System.out.printf("Số thứ tự: %d\n",this.maHV);
         System.out.printf("Họ tên : %s\n",this.hoTen);
         System.out.printf("Giới tính: %s\n",this.gioiTinh);
         System.out.printf("Quê quán : %s\n",this.queQuan);
@@ -41,14 +40,14 @@ public class NguoiHoc {
     }
 
 
-    public void hienThiDsNguoiHocDeCapNhat(){
-        System.out.printf("Số thứ tự: %d\n", this.getMaHVDeCapNhat());
-        System.out.printf("Họ tên : %s\n",this.hoTen);
-        System.out.printf("Giới tính: %s\n",this.gioiTinh);
-        System.out.printf("Quê quán : %s\n",this.queQuan);
-        System.out.printf("Ngày sinh : %s\n",f.format(this.getNgaySinh()));
-        System.out.printf("Ngày tham gia : %s\n",f.format(this.getNgayGiaNhap()));
-    }
+//    public void hienThiDsNguoiHocDeCapNhat(){
+//        System.out.printf("Số thứ tự: %d\n", this.getMaHVDeCapNhat());
+//        System.out.printf("Họ tên : %s\n",this.hoTen);
+//        System.out.printf("Giới tính: %s\n",this.gioiTinh);
+//        System.out.printf("Quê quán : %s\n",this.queQuan);
+//        System.out.printf("Ngày sinh : %s\n",f.format(this.getNgaySinh()));
+//        System.out.printf("Ngày tham gia : %s\n",f.format(this.getNgayGiaNhap()));
+//    }
 
     public String getHoTen() {
         return hoTen;
@@ -106,6 +105,10 @@ public class NguoiHoc {
 //        this.ngaySinh = ngaySinh;
 //    }
 
+    public static void setDem(){
+        dem = 0;
+    }
+
     public Date getNgayGiaNhap() {
         return ngayGiaNhap;
     }
@@ -113,12 +116,12 @@ public class NguoiHoc {
     public void setNgayGiaNhap(Date ngayGiaNhap) {
         this.ngayGiaNhap = ngayGiaNhap;
     }
-
-    public int getMaHVDeCapNhat() {
-        return maHVDeCapNhat;
-    }
-
-    public void setMaHVDeCapNhat(int maHVDeCapNhat) {
-        this.maHVDeCapNhat = maHVDeCapNhat;
-    }
+//
+//    public int getMaHVDeCapNhat() {
+//        return maHVDeCapNhat;
+//    }
+//
+//    public void setMaHVDeCapNhat(int maHVDeCapNhat) {
+//        this.maHVDeCapNhat = maHVDeCapNhat;
+//    }
 }

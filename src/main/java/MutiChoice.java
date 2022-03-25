@@ -13,6 +13,8 @@ public class MutiChoice {
     private String danhSachDapAn;
     private boolean check;
 
+    private static int dem = 0;
+    private int soTT = ++dem;
 
     public MutiChoice(String nd,String danhSachDapAn,String dapAnDung,String danhMuc,String doKho){
         this.noiDung = nd;
@@ -22,23 +24,27 @@ public class MutiChoice {
         this.doKho = doKho;
     }
 
+    public static void setDem(){
+        dem = 0;
+    }
+
     public void hienThi(){
-        System.out.printf("\n%s\n",this.noiDung);
+        System.out.printf("\n%d.%s\n",this.soTT,this.noiDung);
         System.out.printf("%s\n",this.danhSachDapAn);
         System.out.printf("Danh mục: %s\n",this.danhMuc);
         System.out.printf("Cấp độ: %s\n",this.doKho);
     }
-    public static int demKetQua = 1;
+//    public static int demKetQua = 1;
     public void hienThiKetQua(){
         if (this.check == false) {
-            System.out.printf("\n%d.%s |=> đáp án là %s\n",demKetQua++,this.noiDung, this.dapAnDung);
+            System.out.printf("\n%d.%s |=> đáp án là %s\n",this.soTT,this.noiDung, this.dapAnDung);
         }
         else
-            System.out.printf("\n%d.%s |=> bạn trả lời đúng\n",demKetQua++,this.noiDung);
+            System.out.printf("\n%d.%s |=> bạn trả lời đúng\n",this.soTT,this.noiDung);
     }
-    public static int dem = 1;
+//    public static int dem = 1;
     public void chonDapAn(){
-        System.out.printf("Câu thứ %d: %s\n",dem++,this.noiDung);
+        System.out.printf("Câu thứ %d: %s\n",this.soTT,this.noiDung);
         System.out.printf("%s\n",this.danhSachDapAn);
         System.out.print("Nhập đáp án A hoặc B : ");
         String dapAnDung = sc.nextLine();

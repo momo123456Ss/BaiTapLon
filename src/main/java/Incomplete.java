@@ -14,6 +14,12 @@ public class Incomplete {
     private  boolean[] check = new boolean[15];
     private ArrayList<Boolean> checkn = new ArrayList<>();
 
+    private static int dem = 0;
+    private int soTT = ++dem;
+    public static void setDem(){
+        dem = 0;
+    }
+
     public Incomplete(String nd, ArrayList<String> dong, ArrayList<String> dapAn, String doKho){
         this.noiDung = nd;
         this.setDong(dong);
@@ -22,7 +28,7 @@ public class Incomplete {
     }
 
     public void hienThiINC(){
-        System.out.printf("%s\n",this.noiDung);
+        System.out.printf("\n%d.%s\n",this.soTT,this.noiDung);
         for (int i = 0; i < SO_CAU; i++) {
             System.out.println(this.dong.get(i));
         }
@@ -33,7 +39,7 @@ public class Incomplete {
 
 
     public void chonDapAnINC(){
-        System.out.printf("%s\n",this.noiDung);
+        System.out.printf("%d.%s\n",this.soTT,this.noiDung);
         for (int i = 0;i<SO_CAU;i++){
             System.out.printf("%s\n",this.dong.get(i));
             System.out.print("Chọn đáp án: ");

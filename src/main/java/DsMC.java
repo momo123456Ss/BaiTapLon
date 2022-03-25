@@ -10,12 +10,13 @@ import java.util.stream.Collectors;
 public class DsMC {
     private List<MutiChoice> dsMC = new ArrayList<>();
     private List<Incomplete> dsInC = new ArrayList<>();
+    private List<Conversation> dsConSer = new ArrayList<>();
     private static final Scanner sc = new Scanner(System.in);
     public void hienThiDanhSach(){
         for (MutiChoice h : this.getDsMC()){
             h.hienThi();
         }
-        MutiChoice.dem =1;
+        MutiChoice.setDem();
     }
 
     //Hiển thị Inconplete
@@ -24,12 +25,21 @@ public class DsMC {
 //            h.hienThiIncomplete();
             h.hienThiINC();
         }
+        Incomplete.setDem();
     }
     public void hienThiDanhSachKetQuaINC(){
         for (Incomplete h : this.dsInC){
             h.hienThiKetQuaInCom();
         }
     }
+    //Hiển Thị ConserVation
+    public void hienThiConServation(){
+        for (Conversation h : this.dsConSer){
+            h.hienThiMotCauConservation();
+        }
+        Conversation.setDem();
+    }
+
 
     public void docFileMC(String path) throws FileNotFoundException {
         File f = new File(path);
@@ -66,6 +76,26 @@ public class DsMC {
             }
         }
     }
+//Đọc conservation
+public void docFileConservation(String path) throws FileNotFoundException {
+    File f = new File(path);
+    ArrayList<String> cauHoi = new ArrayList<>();
+    ArrayList<String> dapAn = new ArrayList<>();
+    try(Scanner scanner = new Scanner(f)) {
+        while (scanner.hasNext()){
+            String noiDung = scanner.nextLine();
+            for (int i = 0;i<5;i++){
+                cauHoi.add(scanner.nextLine());
+            }
+            for (int i = 0;i<5;i++){
+                dapAn.add(scanner.nextLine());
+            }
+            String doKho = scanner.nextLine();
+            Conversation dsConSer = new Conversation(noiDung,cauHoi,dapAn,doKho);
+            this.dsConSer.add(dsConSer);
+        }
+    }
+}
 
     public void chonDapAnChoCauHoiMC(){
         for (MutiChoice h: this.dsMC){
@@ -94,6 +124,7 @@ public class DsMC {
             MutiChoice randomElemen = dsMC.get(list.get(i));
             randomElemen.hienThiKetQua();
         }
+        MutiChoice.setDem();
     }
     public void RandomIncomplete(String tuKhoa){
         ArrayList<Integer> list = new ArrayList<Integer>();
@@ -109,8 +140,23 @@ public class DsMC {
                 randomElemen.hienThiKetQuaInCom();
                 return;
             }
-            else
+        }
+    }
+
+    public void RandomConservation(String tuKhoa){
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        for (int i = 0; i< this.dsConSer.size();i++){
+            list.add(i);
+        }
+        Collections.shuffle(list);
+        for (int i = 0 ; i < this.dsConSer.size();i++)
+        {
+            Conversation randomElemen = dsConSer.get(list.get(i));
+            if(randomElemen.getDoKhoConser().equalsIgnoreCase(tuKhoa)){
+                randomElemen.chonDapAnConservation();
+                randomElemen.hienThiKetQuaConservation();
                 return;
+            }
         }
     }
 
