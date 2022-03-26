@@ -71,7 +71,7 @@ public class DsNguoiHoc {
         FileWriter w2 = new FileWriter(f,true);
         try (PrintWriter w = new PrintWriter(w2)){
             for (NguoiHoc h : capnhat){
-                w.printf("%s\n%s\n%s\n%s\n%s",h.getHoTen(),h.getGioiTinh(),h.getQueQuan(),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgaySinh()),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgayGiaNhap()));
+                w.printf("%s\n%s\n%s\n%s\n%s\n",h.getHoTen(),h.getGioiTinh(),h.getQueQuan(),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgaySinh()),new SimpleDateFormat("dd/MM/yyyy").format(h.getNgayGiaNhap()));
             }
         }
 
@@ -121,6 +121,29 @@ public class DsNguoiHoc {
 
                     }
                 }while (choose >= 1 && choose <= 4);
+            }
+        }
+    }
+    public void capNhatKetQuaThem(String hoten) throws IOException {
+        File f = new File("src/main/resources/ketquahoctap.txt");
+        FileWriter w2 = new FileWriter(f,true);
+        try (PrintWriter w = new PrintWriter(w2)){
+                w.printf("%s\n%d\n",hoten,0);
+        }
+    }
+    public void capNhatKetQuaXoa(List<NguoiHoc> capnhat) throws IOException {
+        File f = new File("src/main/resources/ketquahoctap.txt");
+        try (PrintWriter w = new PrintWriter(f)){
+            for (NguoiHoc h : capnhat){
+                w.printf("%s\n%d\n",h.getHoTen(),0);
+            }
+        }
+    }
+    public void capNhatKetQua(List<NguoiHoc> capnhat) throws IOException {
+        File f = new File("src/main/resources/ketquahoctap.txt");
+        try (PrintWriter w = new PrintWriter(f)){
+            for (NguoiHoc h : capnhat){
+                w.printf("%s\n%d\n",h.getHoTen(),0);
             }
         }
     }

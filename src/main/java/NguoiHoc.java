@@ -12,6 +12,8 @@ public class NguoiHoc {
     private Date ngaySinh;
     private Date ngayGiaNhap;
 
+    private static int demSoLan = 0;
+    private int demSoLanLamBai = ++demSoLan;
 
     public NguoiHoc(String ht,String gioiTinh,String qq,Date ns, Date ntg){
         this.hoTen = ht;
@@ -116,6 +118,11 @@ public class NguoiHoc {
     public void setNgayGiaNhap(Date ngayGiaNhap) {
         this.ngayGiaNhap = ngayGiaNhap;
     }
+
+    public int getDemSoLanLamBai() {
+        return demSoLanLamBai;
+    }
+
 //
 //    public int getMaHVDeCapNhat() {
 //        return maHVDeCapNhat;

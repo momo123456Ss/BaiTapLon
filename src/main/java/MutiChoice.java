@@ -13,6 +13,9 @@ public class MutiChoice {
     private String danhSachDapAn;
     private boolean check;
 
+    private int demSoLan = 0;
+    public int demSoLanLamBai = ++demSoLan;
+
     private static int dem = 0;
     private int soTT = ++dem;
 
@@ -112,4 +115,9 @@ public class MutiChoice {
     public void setDanhSachDapAn(String danhSachDapAn) {
         this.danhSachDapAn = danhSachDapAn;
     }
+
+    public int getDemSoLanLamBai() {
+        return demSoLanLamBai;
+    }
+
 }

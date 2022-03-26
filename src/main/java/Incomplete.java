@@ -20,6 +20,8 @@ public class Incomplete {
         dem = 0;
     }
 
+    private static int demSoLan = 0;
+    private int demSoLanLamBai = ++demSoLan;
     public Incomplete(String nd, ArrayList<String> dong, ArrayList<String> dapAn, String doKho){
         this.noiDung = nd;
         this.setDong(dong);
@@ -114,4 +116,9 @@ public class Incomplete {
     public void setDoKho(String doKho) {
         this.doKho = doKho;
     }
+
+    public int getDemSoLanLamBai() {
+        return demSoLanLamBai;
+    }
+
 }

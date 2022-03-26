@@ -66,7 +66,8 @@ public class Run {
                     "Hiển thị danh sách câu hỏi Conversation\n4.Tìm kiếm câu hỏi theo từ khóa Nội dung-Độ khó-Danh mục\n" +
                     "5.Random câu hỏi mutipleChoie\n6.Random câu hỏi InComplete\n7.Random câu hỏi Conservation\n" +
                     "======MENU người học======\n" +
-                    "8.Hiển Thị danh sách Người Học\n9.Thêm 1 người học\n10.Xóa 1 người học\n11.Cập nhật thông tin 1 người học\n12.List\n=>Bạn Chọn: ");
+                    "8.Hiển Thị danh sách Người Học\n9.Thêm 1 người học\n10.Xóa 1 người học\n11.Cập nhật thông tin 1 người học\n12....\n" +
+                    "13.Luyện tập\n=>Bạn Chọn: ");
             choose = sc.nextInt();
             sc.nextLine();
             switch (choose){
@@ -112,11 +113,13 @@ public class Run {
                     Conversation.setDem();
                     break;
                 case 8:
+                    NguoiHoc.setDem();
                     dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
                     System.out.println("===Danh sách người học====");
                     dsNH.hienThiDanhSach();
                     break;
                 case 9:
+                    NguoiHoc.setDem();
                     SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
                     System.out.println("===Thêm một học viên====");
                     dsNH.hienThiDanhSach();
@@ -128,6 +131,10 @@ public class Run {
                     dsNH.themHV(newbie1);
                     List<NguoiHoc> kqThem = dsNH.docThongTinNguoiHoc();
                     dsNH.capNhat("src/main/resources/nguoihoctest.txt",kqThem);
+
+                    dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
+
+                    dsNH.capNhatKetQuaThem(hoTen);
                     break;
                 case 10:
                     NguoiHoc.setDem();
@@ -151,13 +158,26 @@ public class Run {
                     dsNH.capNhatThongTin(soTT);
                     List<NguoiHoc> kqCapNhat = dsNH.docThongTinNguoiHoc();
                     dsNH.capNhatXoa("src/main/resources/nguoihoctest.txt",kqCapNhat);
+
                     break;
                 case 12:
+                    NguoiHoc.setDem();
                     dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
                     List<NguoiHoc> kq = dsNH.docThongTinNguoiHoc();
                     DsNguoiHoc.xuatKetQuaNguoiHoc("src/main/resources/nguoihocketqua.txt",kq);
                     break;
+                case 13:
+                    NguoiHoc.setDem();
+                    MutiChoice.soCauDungMutipleChoice = 0;
+                    dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
+                    System.out.println("===Danh sách người học====");
+                    dsNH.hienThiDanhSach();
+                    dsMC.docDsKetQuaNguoiHoc();
+                    System.out.println("Nhập số thứ tự trên danh sách kia: ");
+                    int m = sc.nextInt();
+                    dsMC.abc(m-1);
+                    break;
             }//
-        }while(choose >= 1 && choose <= 12);
+        }while(choose >= 1 && choose <= 13);
     }
 }

@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,6 +10,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class DsMC {
+    private List<KetQuaHocTap> dsKetQua = new ArrayList<>();
     private List<MutiChoice> dsMC = new ArrayList<>();
     private List<Incomplete> dsInC = new ArrayList<>();
     private List<Conversation> dsConSer = new ArrayList<>();
@@ -18,6 +21,10 @@ public class DsMC {
         }
         MutiChoice.setDem();
     }
+
+    private List<NguoiHoc> dsNgHoc = new ArrayList<>();
+
+
 
     //Hiển thị Inconplete
     public void hienThiInComplete(){
@@ -174,4 +181,75 @@ public void docFileConservation(String path) throws FileNotFoundException {
     public void setDsMC(List<MutiChoice> dsMC) {
         this.dsMC = dsMC;
     }
+
+    public void docDsNguoiHoc() throws FileNotFoundException {
+        File f = new File("src/main/resources/nguoihoctest.txt");
+        try(Scanner scanner = new Scanner(f)) {
+            while (scanner.hasNext()){
+                String hoTen = scanner.nextLine();
+                String gioiTinh = scanner.nextLine();
+                String queQuan = scanner.nextLine();
+                String ngaySinh = scanner.nextLine();
+                String ngayThamGia = scanner.nextLine();
+                NguoiHoc Hv = new NguoiHoc(hoTen,gioiTinh,queQuan,ngaySinh,ngayThamGia);
+                this.dsNgHoc.add(Hv);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void docDsKetQuaNguoiHoc() throws FileNotFoundException {
+        File f = new File("src/main/resources/ketquahoctap.txt");
+        try(Scanner scanner = new Scanner(f)) {
+            while (scanner.hasNext()){
+                    String hoTen = scanner.nextLine();
+                    int soLan = scanner.nextInt();
+                    scanner.nextLine();
+                    KetQuaHocTap kq = new KetQuaHocTap(hoTen,soLan);
+                    this.dsKetQua.add(kq);
+            }
+        }
+    }
+    public void hienThiKetQuaHocTap(){
+        for (KetQuaHocTap h : this.dsKetQua){
+            h.hienThiKetQuaNguoiHoc();
+        }
+    }
+    public  void abc(int n) throws FileNotFoundException {
+        docDsNguoiHoc();
+        docFileMC("src/main/resources/mutichoice.txt");
+        for (NguoiHoc h: this.dsNgHoc){
+            if (n == h.getMaHV()){
+                System.out.print("Nhập số câu : ");
+                int m = sc.nextInt();
+                RandomMutiChoie(m);
+                System.out.printf("%s === Số câu đúng %d\n",h.getHoTen(),MutiChoice.soCauDungMutipleChoice);
+                        File f = new File("src/main/resources/ketquahoctap.txt");
+                        try (PrintWriter w = new PrintWriter(f)){
+                            for (KetQuaHocTap q : this.dsKetQua){
+                                if(h.getHoTen().equals(q.getTenNguoiHoc())) {
+                                    docDsKetQuaNguoiHoc();
+                                    w.printf("%s\n%d\n", q.getTenNguoiHoc(), q.getSoLanLamBai()+1);
+                                }
+                                else {
+                                    w.printf("%s\n%d\n", q.getTenNguoiHoc(), q.getSoLanLamBai());
+                                }
+                            }
+                }
+            }
+        }
+    }
+    public List<KetQuaHocTap> docThongTinKetQuaNguoiHoc(){
+       return this.dsKetQua.stream().collect(Collectors.toList());
+    }
+    public static void capNhatKetQua(List<KetQuaHocTap> capnhat) throws IOException {
+        File f = new File("src/main/resources/ketquahoctap.txt");
+        try (PrintWriter w = new PrintWriter(f)){
+            for (KetQuaHocTap h : capnhat){
+                w.printf("%s\n%d\n",h.getTenNguoiHoc(),h.getSoLanLamBai());
+            }
+        }
+    }
 }
+
