@@ -41,16 +41,6 @@ public class NguoiHoc {
         System.out.printf("Ngày tham gia : %s\n",f.format(this.getNgayGiaNhap()));
     }
 
-
-//    public void hienThiDsNguoiHocDeCapNhat(){
-//        System.out.printf("Số thứ tự: %d\n", this.getMaHVDeCapNhat());
-//        System.out.printf("Họ tên : %s\n",this.hoTen);
-//        System.out.printf("Giới tính: %s\n",this.gioiTinh);
-//        System.out.printf("Quê quán : %s\n",this.queQuan);
-//        System.out.printf("Ngày sinh : %s\n",f.format(this.getNgaySinh()));
-//        System.out.printf("Ngày tham gia : %s\n",f.format(this.getNgayGiaNhap()));
-//    }
-
     public String getHoTen() {
         return hoTen;
     }
@@ -91,21 +81,6 @@ public class NguoiHoc {
         this.maHV = maHV;
     }
 
-//    public String getNgayGiaNhap() {
-//        return ngayGiaNhap;
-//    }
-//
-//    public void setNgayGiaNhap(String ngayGiaNhap) {
-//        this.ngayGiaNhap = ngayGiaNhap;
-//    }
-//
-//    public String getNgaySinh() {
-//        return ngaySinh;
-//    }
-//
-//    public void setNgaySinh(String ngaySinh) {
-//        this.ngaySinh = ngaySinh;
-//    }
 
     public static void setDem(){
         dem = 0;
@@ -123,12 +98,4 @@ public class NguoiHoc {
         return demSoLanLamBai;
     }
 
-//
-//    public int getMaHVDeCapNhat() {
-//        return maHVDeCapNhat;
-//    }
-//
-//    public void setMaHVDeCapNhat(int maHVDeCapNhat) {
-//        this.maHVDeCapNhat = maHVDeCapNhat;
-//    }
 }

@@ -67,6 +67,7 @@ public class Run {
                     "5.Random câu hỏi mutipleChoie\n6.Random câu hỏi InComplete\n7.Random câu hỏi Conservation\n" +
                     "======MENU người học======\n" +
                     "8.Hiển Thị danh sách Người Học\n9.Thêm 1 người học\n10.Xóa 1 người học\n11.Cập nhật thông tin 1 người học\n12....\n" +
+                    "======MENU Luyện tập======\n" +
                     "13.Luyện tập\n14.Hiển thị kết quả học tập\n=>Bạn Chọn: ");
             choose = sc.nextInt();
             sc.nextLine();
@@ -169,6 +170,9 @@ public class Run {
                     dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
                     List<NguoiHoc> kq = dsNH.docThongTinNguoiHoc();
                     DsNguoiHoc.xuatKetQuaNguoiHoc("src/main/resources/nguoihocketqua.txt",kq);
+//                    dsMC.docDsKetQuaNguoiHoc();
+//                    List<KetQuaHocTap> ketqua1= dsMC.docThongTinKetQuaNguoiHoc();
+//                    dsMC.capNhatKetQua(ketqua1);
                     break;
                 case 13:
                     NguoiHoc.setDem();

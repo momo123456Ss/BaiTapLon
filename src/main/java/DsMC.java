@@ -10,6 +10,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class DsMC {
+    private static final SimpleDateFormat fomat = new SimpleDateFormat("dd/MM/yyyy");
     private List<KetQuaHocTap> dsKetQua = new ArrayList<>();
     private List<MutiChoice> dsMC = new ArrayList<>();
     private List<Incomplete> dsInC = new ArrayList<>();
@@ -216,7 +217,7 @@ public void docFileConservation(String path) throws FileNotFoundException {
             h.hienThiKetQuaNguoiHoc();
         }
     }
-    public  void abc(int n) throws FileNotFoundException {
+    public  void abc(int n) throws IOException {
         docDsNguoiHoc();
         docFileMC("src/main/resources/mutichoice.txt");
         for (NguoiHoc h: this.dsNgHoc){
@@ -225,17 +226,22 @@ public void docFileConservation(String path) throws FileNotFoundException {
                 int m = sc.nextInt();
                 RandomMutiChoie(m);
                 System.out.printf("%s === Số câu đúng %d\n",h.getHoTen(),MutiChoice.soCauDungMutipleChoice);
-                        File f = new File("src/main/resources/ketquahoctap.txt");
-                        try (PrintWriter w = new PrintWriter(f)){
-                            for (KetQuaHocTap q : this.dsKetQua){
-                                if(h.getHoTen().equals(q.getTenNguoiHoc())) {
-                                    docDsKetQuaNguoiHoc();
-                                    w.printf("%s\n%d\n", q.getTenNguoiHoc(), q.getSoLanLamBai()+1);
-                                }
-                                else {
-                                    w.printf("%s\n%d\n", q.getTenNguoiHoc(), q.getSoLanLamBai());
-                                }
-                            }
+                File f = new File("src/main/resources/ketquahoctap.txt");
+                try (PrintWriter w = new PrintWriter(f)){
+                    for (KetQuaHocTap q : this.dsKetQua){
+                        if(h.getHoTen().equals(q.getTenNguoiHoc())) {
+                            docDsKetQuaNguoiHoc();
+                            w.printf("%s\n%d\n", q.getTenNguoiHoc(), q.getSoLanLamBai()+1);
+                        }
+                        else {
+                            w.printf("%s\n%d\n", q.getTenNguoiHoc(), q.getSoLanLamBai());
+                        }
+                    }
+                }
+                File f2 = new File("src/main/resources/thongkeketquahoctap.txt");
+                FileWriter w2 = new FileWriter(f2,true);
+                try (PrintWriter w = new PrintWriter(w2)){
+                    w.printf("%s -- %s -- số câu đúng của phần Mutiple Choice: %d/%d\n",fomat.format(new Date()),h.getHoTen(),MutiChoice.soCauDungMutipleChoice,m);
                 }
             }
         }
@@ -254,5 +260,6 @@ public void docFileConservation(String path) throws FileNotFoundException {
     public void xoaNguoiHocKetQua(int n){
         dsKetQua.remove(n);
     }
+
 }
 

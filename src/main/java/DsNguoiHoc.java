@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 public class DsNguoiHoc {
+    private List<KetQuaHocTap> dsKetQua = new ArrayList<>();
     private List<NguoiHoc> ds = new ArrayList<>();
     private static final SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
     private static final Scanner sc = new Scanner(System.in);
@@ -86,7 +87,7 @@ public class DsNguoiHoc {
         NguoiHoc.setDem();
     }
 
-    public void capNhatThongTin(int mahv) throws ParseException {
+    public void capNhatThongTin(int mahv) throws ParseException, FileNotFoundException {
         int choose;
         for (NguoiHoc h : this.ds){
             if(h.getMaHV() == mahv){
