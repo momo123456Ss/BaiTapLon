@@ -243,13 +243,16 @@ public void docFileConservation(String path) throws FileNotFoundException {
     public List<KetQuaHocTap> docThongTinKetQuaNguoiHoc(){
        return this.dsKetQua.stream().collect(Collectors.toList());
     }
-    public static void capNhatKetQua(List<KetQuaHocTap> capnhat) throws IOException {
+    public void capNhatKetQua(List<KetQuaHocTap> capnhat) throws IOException {
         File f = new File("src/main/resources/ketquahoctap.txt");
         try (PrintWriter w = new PrintWriter(f)){
             for (KetQuaHocTap h : capnhat){
                 w.printf("%s\n%d\n",h.getTenNguoiHoc(),h.getSoLanLamBai());
             }
         }
+    }
+    public void xoaNguoiHocKetQua(int n){
+        dsKetQua.remove(n);
     }
 }
 

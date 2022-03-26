@@ -67,7 +67,7 @@ public class Run {
                     "5.Random câu hỏi mutipleChoie\n6.Random câu hỏi InComplete\n7.Random câu hỏi Conservation\n" +
                     "======MENU người học======\n" +
                     "8.Hiển Thị danh sách Người Học\n9.Thêm 1 người học\n10.Xóa 1 người học\n11.Cập nhật thông tin 1 người học\n12....\n" +
-                    "13.Luyện tập\n=>Bạn Chọn: ");
+                    "13.Luyện tập\n14.Hiển thị kết quả học tập\n=>Bạn Chọn: ");
             choose = sc.nextInt();
             sc.nextLine();
             switch (choose){
@@ -147,6 +147,10 @@ public class Run {
                     List<NguoiHoc> kqXoa = dsNH.docThongTinNguoiHoc();
                     dsNH.capNhatXoa("src/main/resources/nguoihoctest.txt",kqXoa);
 
+                    dsMC.docDsKetQuaNguoiHoc();
+                    dsMC.xoaNguoiHocKetQua(soTT-1);
+                    List<KetQuaHocTap> ketqua = dsMC.docThongTinKetQuaNguoiHoc();
+                    dsMC.capNhatKetQua(ketqua);
                     break;
                 case 11:
                     NguoiHoc.setDem();
@@ -175,9 +179,13 @@ public class Run {
                     dsMC.docDsKetQuaNguoiHoc();
                     System.out.println("Nhập số thứ tự trên danh sách kia: ");
                     int m = sc.nextInt();
-                    dsMC.abc(m-1);
+                    dsMC.abc(m);
+                    break;
+                case 14:
+                    dsMC.docDsKetQuaNguoiHoc();
+                    dsMC.hienThiKetQuaHocTap();
                     break;
             }//
-        }while(choose >= 1 && choose <= 13);
+        }while(choose >= 1 && choose <= 14);
     }
 }
