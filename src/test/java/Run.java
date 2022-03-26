@@ -183,7 +183,7 @@ public class Run {
                     dsMC.docDsKetQuaNguoiHoc();
                     System.out.println("Nhập số thứ tự trên danh sách kia: ");
                     int m = sc.nextInt();
-                    dsMC.abc(m);
+                    dsMC.LuyenTapEngMutiple(m);
                     break;
                 case 14:
                     dsMC.docDsKetQuaNguoiHoc();

@@ -217,7 +217,7 @@ public void docFileConservation(String path) throws FileNotFoundException {
             h.hienThiKetQuaNguoiHoc();
         }
     }
-    public  void abc(int n) throws IOException {
+    public  void LuyenTapEngMutiple(int n) throws IOException {
         docDsNguoiHoc();
         docFileMC("src/main/resources/mutichoice.txt");
         for (NguoiHoc h: this.dsNgHoc){
