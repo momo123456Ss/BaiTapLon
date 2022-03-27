@@ -9,6 +9,13 @@ import java.util.stream.Collectors;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 public class DsNguoiHoc {
+    public static int SO_LUONG_HOC_VIEN = 11;
+    public  static void setSoLuongHocVienXoa(){
+        SO_LUONG_HOC_VIEN = SO_LUONG_HOC_VIEN - 1;
+    }
+    public  static void setSoLuongHocVienThem(){
+        SO_LUONG_HOC_VIEN = SO_LUONG_HOC_VIEN + 1;
+    }
     private List<KetQuaHocTap> dsKetQua = new ArrayList<>();
     private List<NguoiHoc> ds = new ArrayList<>();
     private static final SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");

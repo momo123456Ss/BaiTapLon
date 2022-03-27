@@ -55,7 +55,7 @@ public class Run {
 
 
         ////MENU
-        int choose;
+        int choose,chon12;
         Scanner sc = new Scanner(System.in);
         do {
             int soTT;
@@ -66,9 +66,9 @@ public class Run {
                     "Hiển thị danh sách câu hỏi Conversation\n4.Tìm kiếm câu hỏi theo từ khóa Nội dung-Độ khó-Danh mục\n" +
                     "5.Random câu hỏi mutipleChoie\n6.Random câu hỏi InComplete\n7.Random câu hỏi Conservation\n" +
                     "======MENU người học======\n" +
-                    "8.Hiển Thị danh sách Người Học\n9.Thêm 1 người học\n10.Xóa 1 người học\n11.Cập nhật thông tin 1 người học\n12....\n" +
+                    "8.Hiển Thị danh sách Người Học\n9.Thêm 1 người học\n10.Xóa 1 người học\n11.Cập nhật thông tin 1 người học\n" +
                     "======MENU Luyện tập======\n" +
-                    "13.Luyện tập\n14.Hiển thị kết quả học tập\n=>Bạn Chọn: ");
+                    "12.Luyện tập người học\n13.Luyện tập\n14.Hiển thị kết quả học tập\n=>Bạn Chọn: ");
             choose = sc.nextInt();
             sc.nextLine();
             switch (choose){
@@ -136,6 +136,8 @@ public class Run {
                     dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
 
                     dsNH.capNhatKetQuaThem(hoTen);
+
+                    DsNguoiHoc.setSoLuongHocVienThem();
                     break;
                 case 10:
                     NguoiHoc.setDem();
@@ -152,6 +154,8 @@ public class Run {
                     dsMC.xoaNguoiHocKetQua(soTT-1);
                     List<KetQuaHocTap> ketqua = dsMC.docThongTinKetQuaNguoiHoc();
                     dsMC.capNhatKetQua(ketqua);
+
+                    DsNguoiHoc.setSoLuongHocVienXoa();
                     break;
                 case 11:
                     NguoiHoc.setDem();
@@ -166,13 +170,31 @@ public class Run {
 
                     break;
                 case 12:
-                    NguoiHoc.setDem();
-                    dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
-                    List<NguoiHoc> kq = dsNH.docThongTinNguoiHoc();
-                    DsNguoiHoc.xuatKetQuaNguoiHoc("src/main/resources/nguoihocketqua.txt",kq);
-//                    dsMC.docDsKetQuaNguoiHoc();
-//                    List<KetQuaHocTap> ketqua1= dsMC.docThongTinKetQuaNguoiHoc();
-//                    dsMC.capNhatKetQua(ketqua1);
+
+                    System.out.print("Bạn đăng ký chưa\n1.Chưa\n2.Đã đăng ký\n=>Bạn chọn: ");
+                    chon12 = sc.nextInt();
+                    sc.nextLine();
+                    if (chon12 == 1){
+                        System.out.println("Chọn mục 9 để đăng ký");
+                    }
+                    else if(chon12 == 2){
+                        System.out.print("Chọn mục muốn luyện tập\n1.MutipleChoice\n2.InComple\n3.Conservation\n=>Bạn chọn");
+                        chon12 = sc.nextInt();
+                        sc.nextLine();
+                        if (chon12 == 1){
+                            NguoiHoc.setDem();
+                            MutiChoice.soCauDungMutipleChoice = 0;
+                            dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
+                            System.out.println("===Danh sách người học====");
+                            dsNH.hienThiDanhSach();
+                            dsMC.docDsKetQuaNguoiHoc();
+                            System.out.println("Nhập số thứ tự trên danh sách kia: ");
+                            int m = sc.nextInt();
+                            dsMC.LuyenTapEngMutiple(m);
+                        }
+                        else
+                            return;
+                    }
                     break;
                 case 13:
                     NguoiHoc.setDem();
