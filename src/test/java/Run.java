@@ -137,7 +137,7 @@ public class Run {
 
                     dsNH.capNhatKetQuaThem(hoTen);
 
-                    DsNguoiHoc.setSoLuongHocVienThem();
+
                     break;
                 case 10:
                     NguoiHoc.setDem();
@@ -155,7 +155,7 @@ public class Run {
                     List<KetQuaHocTap> ketqua = dsMC.docThongTinKetQuaNguoiHoc();
                     dsMC.capNhatKetQua(ketqua);
 
-                    DsNguoiHoc.setSoLuongHocVienXoa();
+
                     break;
                 case 11:
                     NguoiHoc.setDem();
