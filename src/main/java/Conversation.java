@@ -2,7 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Conversation {
-    private static final int SO_CAU = 5;
+    public static int soCauDungConservation = 0;
+    public static final int SO_CAU = 5;
     private static final int SO_DONG_NOI_DUNG  = 3;
     private static final Scanner sc = new Scanner(System.in);
     private String noiDungConSer;
@@ -41,6 +42,7 @@ public class Conversation {
             System.out.print("Chọn đáp án: ");
             String chon = sc.nextLine();
             if(chon.equalsIgnoreCase(this.dapAn.get(i))){
+                soCauDungConservation++;
                 this.check.add(true);
             }
             else {

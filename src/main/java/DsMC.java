@@ -278,6 +278,37 @@ public void docFileConservation(String path) throws FileNotFoundException {
 
 
 
+    public  void LuyenTapEngConservation(int n,String tuKhoa) throws IOException {
+        docDsNguoiHoc();
+        docFileConservation("src/main/resources/conservation.txt");
+        for (NguoiHoc h: this.dsNgHoc){
+            if (n == h.getMaHV()){
+                RandomConservation(tuKhoa);
+                System.out.printf("%s === Số câu đúng %d\n",h.getHoTen(),Conversation.soCauDungConservation);
+                File f = new File("src/main/resources/ketquahoctap.txt");
+                try (PrintWriter w = new PrintWriter(f)){
+                    for (KetQuaHocTap q : this.dsKetQua){
+                        if(h.getHoTen().equals(q.getTenNguoiHoc())) {
+                            docDsKetQuaNguoiHoc();
+                            w.printf("%s\n%d\n", q.getTenNguoiHoc(), q.getSoLanLamBai()+1);
+                        }
+                        else {
+                            w.printf("%s\n%d\n", q.getTenNguoiHoc(), q.getSoLanLamBai());
+                        }
+                    }
+                }
+                File f2 = new File("src/main/resources/thongkeketquahoctap.txt");
+                FileWriter w2 = new FileWriter(f2,true);
+                try (PrintWriter w = new PrintWriter(w2)){
+                    w.printf("%s -- %s -- số câu đúng của phần Conservation : %d/%d\n",fomat.format(new Date()),h.getHoTen(),Conversation.soCauDungConservation, Conversation.SO_CAU);
+                }
+            }
+        }
+    }
+
+
+
+
 
     public List<KetQuaHocTap> docThongTinKetQuaNguoiHoc(){
        return this.dsKetQua.stream().collect(Collectors.toList());

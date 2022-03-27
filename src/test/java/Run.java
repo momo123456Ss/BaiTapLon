@@ -61,6 +61,7 @@ public class Run {
             int soTT;
             DsMC dsMC = new DsMC();
             DsNguoiHoc dsNH = new DsNguoiHoc();
+            DanhSachThongKe thongKe = new DanhSachThongKe();
             System.out.print("======MENU câu hỏi======\n");
             System.out.print("1.Hiển Thị danh sách câu hỏi Mutiple Choice\n2.Hiển thi danh sách câu Incomple\n3." +
                     "Hiển thị danh sách câu hỏi Conversation\n4.Tìm kiếm câu hỏi theo từ khóa Nội dung-Độ khó-Danh mục\n" +
@@ -68,7 +69,9 @@ public class Run {
                     "======MENU người học======\n" +
                     "8.Hiển Thị danh sách Người Học\n9.Thêm 1 người học\n10.Xóa 1 người học\n11.Cập nhật thông tin 1 người học\n" +
                     "======MENU Luyện tập======\n" +
-                    "12.Luyện tập người học\n13.Luyện tập\n14.Hiển thị kết quả học tập\n=>Bạn Chọn: ");
+                    "12.Luyện tập người học\n13.Luyện tập\n14.Hiển thị số lần làm bài\n" +
+                    "15.Thống kê kết quả học tập\n" +
+                    "16.Thống kê kết quả theo tháng\n=>Bạn Chọn: ");
             choose = sc.nextInt();
             sc.nextLine();
             switch (choose){
@@ -206,6 +209,20 @@ public class Run {
                             String mucDo = sc.nextLine();
                             dsMC.LuyenTapEngIncomplete(m,mucDo);
                         }
+                        else if(chon12==3){
+                            NguoiHoc.setDem();
+                            Conversation.soCauDungConservation = 0;
+                            dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
+                            System.out.println("===Danh sách người học====");
+                            dsNH.hienThiDanhSach();
+                            dsMC.docDsKetQuaNguoiHoc();
+                            System.out.println("Nhập số thứ tự trên danh sách kia: ");
+                            int m = sc.nextInt();
+                            sc.nextLine();
+                            System.out.println("Nhập số thứ mức độ: ");
+                            String mucDo = sc.nextLine();
+                            dsMC.LuyenTapEngConservation(m,mucDo);
+                        }
 
                     }
                     break;
@@ -224,7 +241,15 @@ public class Run {
                     dsMC.docDsKetQuaNguoiHoc();
                     dsMC.hienThiKetQuaHocTap();
                     break;
+                case 15:
+                    thongKe.docThongKe();
+                    thongKe.hienThiDanhSach();
+                    break;
+                case 16:
+                    thongKe.docThongKe();
+                    thongKe.thongKeThang();
+                    break;
             }//
-        }while(choose >= 1 && choose <= 14);
+        }while(choose >= 1 && choose <= 16);
     }
 }
