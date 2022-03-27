@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Incomplete {
     private static final Scanner sc = new Scanner(System.in);
-    private static final int SO_CAU = 15;
+    public static final int SO_CAU = 15;
     private List<Incomplete> dsInC = new ArrayList<>();
     private String noiDung;
     private String doKho;
@@ -13,6 +13,7 @@ public class Incomplete {
     private ArrayList<String> chondapAn = new ArrayList<>();
     private  boolean[] check = new boolean[15];
     private ArrayList<Boolean> checkn = new ArrayList<>();
+    public static int soCauDungInComplete = 0;
 
     private static int dem = 0;
     private int soTT = ++dem;
@@ -47,6 +48,7 @@ public class Incomplete {
             System.out.print("Chọn đáp án: ");
             String chon = sc.nextLine();
             if(chon.equalsIgnoreCase(this.dapAn.get(i))){
+                soCauDungInComplete++;
                 this.checkn.add(true);
             }
             else {

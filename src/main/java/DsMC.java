@@ -246,6 +246,39 @@ public void docFileConservation(String path) throws FileNotFoundException {
             }
         }
     }
+
+
+    public  void LuyenTapEngIncomplete(int n,String tuKhoa) throws IOException {
+        docDsNguoiHoc();
+        docFileInCom("src/main/resources/incomplete.txt");
+        for (NguoiHoc h: this.dsNgHoc){
+            if (n == h.getMaHV()){
+                RandomIncomplete(tuKhoa);
+                System.out.printf("%s === Số câu đúng %d\n",h.getHoTen(),Incomplete.soCauDungInComplete);
+                File f = new File("src/main/resources/ketquahoctap.txt");
+                try (PrintWriter w = new PrintWriter(f)){
+                    for (KetQuaHocTap q : this.dsKetQua){
+                        if(h.getHoTen().equals(q.getTenNguoiHoc())) {
+                            docDsKetQuaNguoiHoc();
+                            w.printf("%s\n%d\n", q.getTenNguoiHoc(), q.getSoLanLamBai()+1);
+                        }
+                        else {
+                            w.printf("%s\n%d\n", q.getTenNguoiHoc(), q.getSoLanLamBai());
+                        }
+                    }
+                }
+                File f2 = new File("src/main/resources/thongkeketquahoctap.txt");
+                FileWriter w2 = new FileWriter(f2,true);
+                try (PrintWriter w = new PrintWriter(w2)){
+                    w.printf("%s -- %s -- số câu đúng của phần Incomple : %d/%d\n",fomat.format(new Date()),h.getHoTen(),Incomplete.soCauDungInComplete, Incomplete.SO_CAU);
+                }
+            }
+        }
+    }
+
+
+
+
     public List<KetQuaHocTap> docThongTinKetQuaNguoiHoc(){
        return this.dsKetQua.stream().collect(Collectors.toList());
     }

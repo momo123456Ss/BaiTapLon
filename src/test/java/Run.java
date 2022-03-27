@@ -178,7 +178,7 @@ public class Run {
                         System.out.println("Chọn mục 9 để đăng ký");
                     }
                     else if(chon12 == 2){
-                        System.out.print("Chọn mục muốn luyện tập\n1.MutipleChoice\n2.InComple\n3.Conservation\n=>Bạn chọn");
+                        System.out.print("Chọn mục muốn luyện tập\n1.MutipleChoice\n2.InComple\n3.Conservation\n=>Bạn chọn: ");
                         chon12 = sc.nextInt();
                         sc.nextLine();
                         if (chon12 == 1){
@@ -192,8 +192,21 @@ public class Run {
                             int m = sc.nextInt();
                             dsMC.LuyenTapEngMutiple(m);
                         }
-                        else
-                            return;
+                        else if (chon12 == 2){
+                            NguoiHoc.setDem();
+                            Incomplete.soCauDungInComplete =0;
+                            dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
+                            System.out.println("===Danh sách người học====");
+                            dsNH.hienThiDanhSach();
+                            dsMC.docDsKetQuaNguoiHoc();
+                            System.out.println("Nhập số thứ tự trên danh sách kia: ");
+                            int m = sc.nextInt();
+                            sc.nextLine();
+                            System.out.println("Nhập số thứ mức độ: ");
+                            String mucDo = sc.nextLine();
+                            dsMC.LuyenTapEngIncomplete(m,mucDo);
+                        }
+
                     }
                     break;
                 case 13:

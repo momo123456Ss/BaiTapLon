@@ -3,7 +3,7 @@ Nguyễn Văn A
 Huỳnh Văn Duy
 1
 Huỳnh Văn IoD
-0
+2
 Dương Tấn Tài
 0
 Huỳnh Ngọc A
@@ -13,12 +13,12 @@ KOU
 Nguyễn Văn KKK
 0
 Dương III
-0
+3
 Huỳnh IV
-0
-ABCXYZ
-0
-Dương V
-0
-Huỳnh VVVVVVV
 1
+ABCXYZ
+2
+Dương V
+3
+Huỳnh VVVVVVV
+3
