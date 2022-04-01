@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class DanhSachThongKe {
     List<ThongKeKetQuaHocTap> thongKe = new ArrayList<>();
-    public void docThongKe(){
-        File f = new File("src/main/resources/thongkeketquahoctap.txt");
+    public void docThongKe(String path){
+        File f = new File(path);
         try(Scanner scanner = new Scanner(f)) {
             while (scanner.hasNext()){
                 String nd = scanner.nextLine();

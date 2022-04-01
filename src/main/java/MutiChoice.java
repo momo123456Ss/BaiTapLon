@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class MutiChoice {
     public static int SO_CAU = 9;
     private static final Scanner sc = new Scanner(System.in);
-    public static int soCauDungMutipleChoice = 0;
+    public static double soCauDungMutipleChoice = 0;
     private String noiDung;
     private String dapAn1;
     private String dapAn2;

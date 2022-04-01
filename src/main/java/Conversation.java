@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Conversation {
-    public static int soCauDungConservation = 0;
+    public static double soCauDungConservation = 0;
     public static final int SO_CAU = 5;
     private static final int SO_DONG_NOI_DUNG  = 3;
     private static final Scanner sc = new Scanner(System.in);

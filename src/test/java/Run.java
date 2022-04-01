@@ -71,7 +71,8 @@ public class Run {
                     "======MENU Luyện tập======\n" +
                     "12.Luyện tập người học\n13.Luyện tập\n14.Hiển thị số lần làm bài\n" +
                     "15.Thống kê kết quả học tập\n" +
-                    "16.Thống kê kết quả theo tháng\n=>Bạn Chọn: ");
+                    "16.Thống kê kết quả theo tháng\n" +
+                    "======Thi giữa kì=======>\n17.Thi giữa kì\n18.Thống kê điểm trung bình theo tháng\nBạn Chọn: ");
             choose = sc.nextInt();
             sc.nextLine();
             switch (choose){
@@ -242,14 +243,27 @@ public class Run {
                     dsMC.hienThiKetQuaHocTap();
                     break;
                 case 15:
-                    thongKe.docThongKe();
+                    thongKe.docThongKe("src/main/resources/thongkeketquahoctap.txt");
                     thongKe.hienThiDanhSach();
                     break;
                 case 16:
-                    thongKe.docThongKe();
+                    thongKe.docThongKe("src/main/resources/thongkeketquahoctap.txt");
+                    thongKe.thongKeThang();
+                    break;
+                case 17:
+                    Incomplete.soCauDungInComplete =0;Conversation.soCauDungConservation = 0;MutiChoice.soCauDungMutipleChoice = 0;
+                    System.out.println("Nhập mã số học viên : ");
+                    int ma = sc.nextInt();
+                    System.out.println("=============Bắt đầu=============");
+                    dsMC.thiThoCacThu(ma);
+                    System.out.println("=============Kết thúc=============");
+                    break;
+                case 18:
+                    thongKe.docThongKe("src/main/resources/thithocacthu.txt");
+                    thongKe.hienThiDanhSach();
                     thongKe.thongKeThang();
                     break;
             }//
-        }while(choose >= 1 && choose <= 16);
+        }while(choose >= 1 && choose <= 18);
     }
 }

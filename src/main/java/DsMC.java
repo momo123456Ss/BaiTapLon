@@ -325,5 +325,33 @@ public void docFileConservation(String path) throws FileNotFoundException {
         dsKetQua.remove(n);
     }
 
+    public void thiThoCacThu(int ma) throws IOException {
+        List<String> list = new ArrayList<>();
+        list.add("Dễ");
+        list.add("Trung");
+        list.add("Khó");
+        Collections.shuffle(list);
+        docDsNguoiHoc();
+        docFileMC("src/main/resources/mutichoice.txt");
+        docFileConservation("src/main/resources/conservation.txt");
+        docFileInCom("src/main/resources/incomplete.txt");
+        for (NguoiHoc h: this.dsNgHoc) {
+            if (ma == h.getMaHV()) {
+                RandomMutiChoie(5);
+                System.out.println();
+                RandomIncomplete(list.get(1));
+                System.out.println();
+                RandomConservation(list.get(1));
+                double diemTB = MutiChoice.soCauDungMutipleChoice/5*100/100 + Incomplete.soCauDungInComplete/Incomplete.SO_CAU*100/100 + Conversation.soCauDungConservation/Conversation.SO_CAU*100/100;
+                File f2 = new File("src/main/resources/thithocacthu.txt");
+                FileWriter w2 = new FileWriter(f2,true);
+                try (PrintWriter w = new PrintWriter(w2)){
+                    w.printf("%s --- %s --- điểm thi : %.1f\n",fomat.format(new Date()),h.getHoTen(),diemTB/3);
+                }
+                return;
+            }
+        }
+    }
+
 }
 

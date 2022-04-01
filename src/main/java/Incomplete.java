@@ -13,7 +13,7 @@ public class Incomplete {
     private ArrayList<String> chondapAn = new ArrayList<>();
     private  boolean[] check = new boolean[15];
     private ArrayList<Boolean> checkn = new ArrayList<>();
-    public static int soCauDungInComplete = 0;
+    public static double soCauDungInComplete = 0;
 
     private static int dem = 0;
     private int soTT = ++dem;

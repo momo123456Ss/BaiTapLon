@@ -63,6 +63,9 @@ public class DsNguoiHoc {
     public List<NguoiHoc> docThongTinNguoiHoc(){
         return this.ds.stream().collect(Collectors.toList());
     }
+    public List<KetQuaHocTap> docThongTinKetQuaHocTap(){
+        return this.dsKetQua.stream().collect(Collectors.toList());
+    }
 
     public static void xuatKetQuaNguoiHoc(String path,List<NguoiHoc> kqhoctap) throws FileNotFoundException {
         File f = new File(path);
@@ -94,8 +97,9 @@ public class DsNguoiHoc {
         NguoiHoc.setDem();
     }
 
-    public void capNhatThongTin(int mahv) throws ParseException, FileNotFoundException {
+    public void capNhatThongTin(int mahv) throws ParseException, IOException {
         int choose;
+        String upDateHoTen;
         for (NguoiHoc h : this.ds){
             if(h.getMaHV() == mahv){
                 do {
@@ -106,8 +110,18 @@ public class DsNguoiHoc {
                     switch (choose) {
                         case 1:
                             System.out.print("Nhập tên muốn đổi: ");
-                            String upDateHoTen = sc.nextLine();
+                            String tmp = h.getHoTen();
+                            upDateHoTen = sc.nextLine();
                             h.setHoTen(upDateHoTen);
+                            docDsKetQuaNguoiHocCapNhat();
+                            for (KetQuaHocTap q : this.dsKetQua){
+                                if (q.getTenNguoiHoc().equals(tmp)){
+                                    q.setTenNguoiHoc(upDateHoTen);
+                                }
+                            }
+                            System.out.println(tmp);
+                            List<KetQuaHocTap> kqNguoiHoc =  docThongTinKetQuaHocTap();
+                            capNhatKetQuaSoLanLamBai(kqNguoiHoc);
                             break;
                         case 2:
                             System.out.print("Nhập giới tính muốn đổi : ");
@@ -152,6 +166,27 @@ public class DsNguoiHoc {
         try (PrintWriter w = new PrintWriter(f)){
             for (NguoiHoc h : capnhat){
                 w.printf("%s\n%d\n",h.getHoTen(),0);
+            }
+        }
+    }
+
+    public void capNhatKetQuaSoLanLamBai(List<KetQuaHocTap> capnhat) throws IOException {
+        File f = new File("src/main/resources/ketquahoctap.txt");
+        try (PrintWriter w = new PrintWriter(f)){
+            for (KetQuaHocTap h : capnhat){
+                w.printf("%s\n%d\n",h.getTenNguoiHoc(),h.getSoLanLamBai());
+            }
+        }
+    }
+    public void docDsKetQuaNguoiHocCapNhat() throws FileNotFoundException {
+        File f = new File("src/main/resources/ketquahoctap.txt");
+        try(Scanner scanner = new Scanner(f)) {
+            while (scanner.hasNext()){
+                String hoTen = scanner.nextLine();
+                int soLan = scanner.nextInt();
+                scanner.nextLine();
+                KetQuaHocTap kq = new KetQuaHocTap(hoTen,soLan);
+                this.dsKetQua.add(kq);
             }
         }
     }
