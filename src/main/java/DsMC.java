@@ -348,6 +348,13 @@ public void docFileConservation(String path) throws FileNotFoundException {
                 try (PrintWriter w = new PrintWriter(w2)){
                     w.printf("%s --- %s --- điểm thi : %.1f\n",fomat.format(new Date()),h.getHoTen(),diemTB/3);
                 }
+
+
+                File f3 = new File("src/main/resources/testfile.txt");
+                FileWriter w3 = new FileWriter(f3,true);
+                try (PrintWriter w = new PrintWriter(w3)){
+                    w.printf("%s --- %s\n%.1f\n",fomat.format(new Date()),h.getHoTen(),diemTB/3);
+                }
                 return;
             }
         }

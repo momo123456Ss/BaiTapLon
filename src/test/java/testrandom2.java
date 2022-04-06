@@ -4,11 +4,8 @@ import java.util.List;
 
 public class testrandom2 {
     public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
-        list.add("Dễ");
-        list.add("Trung");
-        list.add("Khó");
-        Collections.shuffle(list);
-        System.out.print(list.get(1));
+       String s = "03";
+       String s1="Nguyễn Văn KKK";
+       System.out.println(s+s1);
     }
 }

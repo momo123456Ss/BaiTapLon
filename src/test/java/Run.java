@@ -71,8 +71,8 @@ public class Run {
                     "======MENU Luyện tập======\n" +
                     "12.Luyện tập người học\n13.Luyện tập\n14.Hiển thị số lần làm bài\n" +
                     "15.Thống kê kết quả học tập\n" +
-                    "16.Thống kê kết quả theo tháng\n" +
-                    "======Thi giữa kì=======>\n17.Thi giữa kì\n18.Thống kê điểm trung bình theo tháng\nBạn Chọn: ");
+                    "16.Thống kê kết quả theo tháng\n17.Thống kê theo tháng của 1 đứa\n" +
+                    "======Thi giữa kì=======>\n18.Thi giữa kì\n19.Thống kê điểm trung bình theo tháng\nBạn Chọn: ");
             choose = sc.nextInt();
             sc.nextLine();
             switch (choose){
@@ -250,7 +250,7 @@ public class Run {
                     thongKe.docThongKe("src/main/resources/thongkeketquahoctap.txt");
                     thongKe.thongKeThang();
                     break;
-                case 17:
+                case 18:
                     Incomplete.soCauDungInComplete =0;Conversation.soCauDungConservation = 0;MutiChoice.soCauDungMutipleChoice = 0;
                     System.out.println("Nhập mã số học viên : ");
                     int ma = sc.nextInt();
@@ -258,12 +258,17 @@ public class Run {
                     dsMC.thiThoCacThu(ma);
                     System.out.println("=============Kết thúc=============");
                     break;
-                case 18:
+                case 19:
                     thongKe.docThongKe("src/main/resources/thithocacthu.txt");
                     thongKe.hienThiDanhSach();
                     thongKe.thongKeThang();
                     break;
+                case 17:
+                    DanhSachDiemGiuaKi dsDiemGiuKi = new DanhSachDiemGiuaKi();
+                    dsDiemGiuKi.docFileDiem();
+                    dsDiemGiuKi.timKiem();
+                    break;
             }//
-        }while(choose >= 1 && choose <= 18);
+        }while(choose >= 1 && choose <= 19);
     }
 }
