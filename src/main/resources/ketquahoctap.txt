@@ -1,13 +1,13 @@
 Nguyễn Văn A
 1
 Huỳnh Văn Duy
-1
+6
 Huỳnh Văn IoD
 2
 Dương Tấn Tài
 0
 Huỳnh Ngọc A
-0
+1
 KOU
 0
 Nguyễn Văn Tèo
@@ -15,7 +15,7 @@ Nguyễn Văn Tèo
 Huỳnh IV
 1
 ABCXYZ
-2
+9
 Dương V
 3
 Huỳnh VVVVVVV

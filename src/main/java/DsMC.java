@@ -109,7 +109,7 @@ public void docFileConservation(String path) throws FileNotFoundException {
         for (MutiChoice h: this.dsMC){
             h.chonDapAn();
         }
-        System.out.printf("Số câu đúng của phần Muti Choice : %d/%d\n", MutiChoice.soCauDungMutipleChoice, MutiChoice.SO_CAU);
+        System.out.printf("Số câu đúng của phần Muti Choice : %d/%d\n", MutiChoice.getSoCauDungMutipleChoice(), MutiChoice.SO_CAU);
     }
 //INC
     public void chonDapAnIncomplete(){
@@ -225,7 +225,7 @@ public void docFileConservation(String path) throws FileNotFoundException {
                 System.out.print("Nhập số câu : ");
                 int m = sc.nextInt();
                 RandomMutiChoie(m);
-                System.out.printf("%s === Số câu đúng %d\n",h.getHoTen(),MutiChoice.soCauDungMutipleChoice);
+                System.out.printf("%s === Số câu đúng %.0f\n",h.getHoTen(),MutiChoice.getSoCauDungMutipleChoice());
                 File f = new File("src/main/resources/ketquahoctap.txt");
                 try (PrintWriter w = new PrintWriter(f)){
                     for (KetQuaHocTap q : this.dsKetQua){
@@ -241,7 +241,7 @@ public void docFileConservation(String path) throws FileNotFoundException {
                 File f2 = new File("src/main/resources/thongkeketquahoctap.txt");
                 FileWriter w2 = new FileWriter(f2,true);
                 try (PrintWriter w = new PrintWriter(w2)){
-                    w.printf("%s -- %s -- số câu đúng của phần Mutiple Choice: %d/%d\n",fomat.format(new Date()),h.getHoTen(),MutiChoice.soCauDungMutipleChoice,m);
+                    w.printf("%s -- %s -- số câu đúng của phần Mutiple Choice: %.0f/%d\n",fomat.format(new Date()),h.getHoTen(),MutiChoice.getSoCauDungMutipleChoice(),m);
                 }
             }
         }
@@ -254,7 +254,7 @@ public void docFileConservation(String path) throws FileNotFoundException {
         for (NguoiHoc h: this.dsNgHoc){
             if (n == h.getMaHV()){
                 RandomIncomplete(tuKhoa);
-                System.out.printf("%s === Số câu đúng %d\n",h.getHoTen(),Incomplete.soCauDungInComplete);
+                System.out.printf("%s === Số câu đúng %.0f\n",h.getHoTen(),Incomplete.getSoCauDungInComplete());
                 File f = new File("src/main/resources/ketquahoctap.txt");
                 try (PrintWriter w = new PrintWriter(f)){
                     for (KetQuaHocTap q : this.dsKetQua){
@@ -270,7 +270,7 @@ public void docFileConservation(String path) throws FileNotFoundException {
                 File f2 = new File("src/main/resources/thongkeketquahoctap.txt");
                 FileWriter w2 = new FileWriter(f2,true);
                 try (PrintWriter w = new PrintWriter(w2)){
-                    w.printf("%s -- %s -- số câu đúng của phần Incomple : %d/%d\n",fomat.format(new Date()),h.getHoTen(),Incomplete.soCauDungInComplete, Incomplete.SO_CAU);
+                    w.printf("%s -- %s -- số câu đúng của phần Incomple : %.0f/%d\n",fomat.format(new Date()),h.getHoTen(),Incomplete.getSoCauDungInComplete(), Incomplete.SO_CAU);
                 }
             }
         }
@@ -284,7 +284,7 @@ public void docFileConservation(String path) throws FileNotFoundException {
         for (NguoiHoc h: this.dsNgHoc){
             if (n == h.getMaHV()){
                 RandomConservation(tuKhoa);
-                System.out.printf("%s === Số câu đúng %d\n",h.getHoTen(),Conversation.soCauDungConservation);
+                System.out.printf("%s === Số câu đúng %.0f\n",h.getHoTen(),Conversation.getSoCauDungConservation());
                 File f = new File("src/main/resources/ketquahoctap.txt");
                 try (PrintWriter w = new PrintWriter(f)){
                     for (KetQuaHocTap q : this.dsKetQua){
@@ -300,7 +300,7 @@ public void docFileConservation(String path) throws FileNotFoundException {
                 File f2 = new File("src/main/resources/thongkeketquahoctap.txt");
                 FileWriter w2 = new FileWriter(f2,true);
                 try (PrintWriter w = new PrintWriter(w2)){
-                    w.printf("%s -- %s -- số câu đúng của phần Conservation : %d/%d\n",fomat.format(new Date()),h.getHoTen(),Conversation.soCauDungConservation, Conversation.SO_CAU);
+                    w.printf("%s -- %s -- số câu đúng của phần Conservation : %.0f/%d\n",fomat.format(new Date()),h.getHoTen(),Conversation.getSoCauDungConservation(), Conversation.SO_CAU);
                 }
             }
         }
@@ -342,7 +342,7 @@ public void docFileConservation(String path) throws FileNotFoundException {
                 RandomIncomplete(list.get(1));
                 System.out.println();
                 RandomConservation(list.get(1));
-                double diemTB = MutiChoice.soCauDungMutipleChoice/5*100/100 + Incomplete.soCauDungInComplete/Incomplete.SO_CAU*100/100 + Conversation.soCauDungConservation/Conversation.SO_CAU*100/100;
+                double diemTB = MutiChoice.getSoCauDungMutipleChoice()/5*100/100 + Incomplete.getSoCauDungInComplete()/Incomplete.SO_CAU*100/100 + Conversation.getSoCauDungConservation()/Conversation.SO_CAU*100/100;
                 File f2 = new File("src/main/resources/thithocacthu.txt");
                 FileWriter w2 = new FileWriter(f2,true);
                 try (PrintWriter w = new PrintWriter(w2)){

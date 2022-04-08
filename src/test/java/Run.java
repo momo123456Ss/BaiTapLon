@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-
+import java.util.IllegalFormatConversionException;
 public class Run {
     public static void main(String[] args) throws IOException, ParseException {
         //Câu hỏi -> tìm kiếm theo nội dung mức độ danh mục
@@ -187,7 +187,7 @@ public class Run {
                         sc.nextLine();
                         if (chon12 == 1){
                             NguoiHoc.setDem();
-                            MutiChoice.soCauDungMutipleChoice = 0;
+                            MutiChoice.setSoCauDungMutipleChoice();
                             dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
                             System.out.println("===Danh sách người học====");
                             dsNH.hienThiDanhSach();
@@ -198,7 +198,7 @@ public class Run {
                         }
                         else if (chon12 == 2){
                             NguoiHoc.setDem();
-                            Incomplete.soCauDungInComplete =0;
+                            Incomplete.setSoCauDungInComplete();
                             dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
                             System.out.println("===Danh sách người học====");
                             dsNH.hienThiDanhSach();
@@ -212,7 +212,7 @@ public class Run {
                         }
                         else if(chon12==3){
                             NguoiHoc.setDem();
-                            Conversation.soCauDungConservation = 0;
+                            Conversation.setSoCauDungConservation();
                             dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
                             System.out.println("===Danh sách người học====");
                             dsNH.hienThiDanhSach();
@@ -229,7 +229,7 @@ public class Run {
                     break;
                 case 13:
                     NguoiHoc.setDem();
-                    MutiChoice.soCauDungMutipleChoice = 0;
+                    MutiChoice.setSoCauDungMutipleChoice();
                     dsNH.docDsNguoiHoc("src/main/resources/nguoihoctest.txt");
                     System.out.println("===Danh sách người học====");
                     dsNH.hienThiDanhSach();
@@ -251,7 +251,7 @@ public class Run {
                     thongKe.thongKeThang();
                     break;
                 case 18:
-                    Incomplete.soCauDungInComplete =0;Conversation.soCauDungConservation = 0;MutiChoice.soCauDungMutipleChoice = 0;
+                    Incomplete.setSoCauDungInComplete();Conversation.setSoCauDungConservation(); MutiChoice.setSoCauDungMutipleChoice();
                     System.out.println("Nhập mã số học viên : ");
                     int ma = sc.nextInt();
                     System.out.println("=============Bắt đầu=============");
